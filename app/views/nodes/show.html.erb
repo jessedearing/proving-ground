@@ -1,7 +1,18 @@
 <div class="grid_16" id="main_content">
   <div class="padded">
-    <%= render :partial => "post", :locals => {:show_teaser => false}, :object => @post %>
+    <%= render :partial => "node", :locals => {:show_teaser => false}, :object => @post %>
   </div>
 </div>
 <div class="clear"></div>
-
+<div class="grid_16 padded">
+  <h4>Comments</h4>
+  <p><a href="#comment" id="comment_new_link">Post New Comment &raquo;</a></p>
+  <div id="comment_new"></div>
+</div>
+<div class="clear"></div>
+<div class="prefix_1 suffix_3 grid_12">
+  <% @post.comments.each do |comment| %>
+    <%= render :partial => "comments/comment", :object => comment %>
+  <% end %>
+</div>
+<div class="clear"></div>

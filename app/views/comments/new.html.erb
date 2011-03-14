@@ -1,0 +1,43 @@
+<style type="text/css">
+#comment_title
+{
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+</style>  
+<% form_for(:comment, @comment) do |f|%>
+<fieldset>
+  <legend>New Comment</legend>
+  <div>
+  <label for="comment_name">
+    Your Name
+  </label>
+  <%= f.text_field :name %>
+  </div>
+  <div>
+  <label for="comment_email">
+    Your Email
+  </label>
+  <%= f.text_field :email %>
+    <div>
+      <small>Your email won't be spammed or displayed publicly</small>
+    </div>
+  </div>
+  <div>
+  <label for="comment_url">
+    Your Homepage
+  </label>
+  <%= f.text_field :url %>
+  </div>
+  <div>
+  <label for="comment_body">
+    Your comment
+  </label>
+    <div>
+      <%= f.text_area :body %>
+    </div>
+  </div>
+  <input id="comment_title" name="comment_title" type="text" />
+</fieldset>
+<% end %>

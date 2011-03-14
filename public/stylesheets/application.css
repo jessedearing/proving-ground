@@ -100,13 +100,13 @@ a
   color: #f00;
 }
 
-h3.post_title a
+h3.node_title a
 {
   color: #000;
   text-decoration: none;
 }
 
-h3.post_title a:hover
+h3.node_title a:hover
 {
   color: #000;
   text-decoration: underline;
@@ -117,8 +117,55 @@ h3.post_title a:hover
   list-style-type: none;
 }
 
+#twitter_image
+{
+  border: none;
+}
+
 #me
 {
   float: left;
   margin: 10px;
+}
+
+span.gravatar
+{
+  float: left;
+}
+
+.comment_body
+{
+  display: inline;
+  margin-left: 15px;
+}
+
+.comment_info
+{
+  margin-top: 15px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 10px;
+  clear: both;
+}
+
+.node_status
+{
+  border-top: solid 1px #aaa;
+  border-bottom: solid 5px #aaa;
+  padding: 5px;
+}
+
+.node_status span.read_more
+{
+  float: right;
+}
+
+.comment
+{
+  font-size: 90%;
+}
+
+#comment_new
+{
+  display: none;
 }

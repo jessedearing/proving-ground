@@ -1,7 +1,7 @@
 <div class="grid_16" id="main_content">
   <div class="padded">
     <% @posts.each do |post| %>
-      <%= render :partial => "post", :locals => { :show_teaser => true }, :object => post %>
+      <%= render :partial => "node", :locals => { :show_teaser => true }, :object => post %>
     <% end %>
   </div>
 </div>

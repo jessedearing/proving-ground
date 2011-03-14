@@ -1,0 +1,13 @@
+<div>
+  <h3 class="node_title"><%= link_to(node.title, node_path(node)) %></h3>
+  <% if show_teaser %>
+    <%= raw node.teaser %>
+  <% else %>
+    <%= raw node.body %>
+  <% end %>
+  <div class="node_status">
+    <%= node.publish_date.strftime("%B %d, %Y") %>
+    <span class="read_more"><%= link_to("Read more", node_path(node)) if show_teaser %></span>
+  </div>
+</div>
+
