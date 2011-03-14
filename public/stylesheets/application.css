@@ -1,0 +1,124 @@
+body {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #fff;
+  /* font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;*/
+  font-family: 'Neuton', 'Arial', sans-serif;
+}
+
+.padded
+{
+  padding: 15px;
+}
+
+#header
+{
+  font-family: "Josefin Slab", serif;
+  margin-top: 5px;
+}
+
+#header a
+{
+  color: #000;
+  text-decoration: none;
+}
+
+#header a:hover
+{
+  color: #000;
+  text-decoration: underline;
+}
+
+#header h1
+{
+  font-size: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+#header h2
+{
+  font-size: 26px;
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+}
+
+.top_line
+{
+  border-bottom: solid 1px #000;
+  margin-bottom: 20px;
+}
+
+.black_background
+{
+  color: #fff;
+  background-color: #000;
+}
+
+#footer
+{
+  margin-top: 200px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  padding: 15px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  clear: both;
+  bottom: 0;
+  left: 0;
+}
+
+h3
+{
+  font-family: 'Droid Sans', 'Arial', sans-serif;
+  font-size: 30px;
+}
+
+h4
+{
+  font-size: 22px;
+  font-family: 'Droid Sans', 'Arial', sans-serif;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h5
+{
+  font-size: 18px;
+  font-family: 'Droid Sans', 'Arial', sans-serif;
+}
+
+a
+{
+  color: #f00;
+}
+
+h3.post_title a
+{
+  color: #000;
+  text-decoration: none;
+}
+
+h3.post_title a:hover
+{
+  color: #000;
+  text-decoration: underline;
+}
+
+#footer ul li
+{
+  list-style-type: none;
+}
+
+#me
+{
+  float: left;
+  margin: 10px;
+}

@@ -1,0 +1,2 @@
+class Page < Node
+end
