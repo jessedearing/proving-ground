@@ -1,7 +1,11 @@
 var JD = (function ($, window, nil) {
     $('#comment_new_link').click(function() {
-    $.get(window.location.href + '/comments/new', function(data) {
-      $('#comment_new').html(data).show('scale');
+    $.ajax({
+      url: window.location.href + '/comments/new', 
+      success: function(data) {
+      $('#comment_new').html(data).show('blind');
+      },
+      dataType: 'html'
     });
     return false;
   });

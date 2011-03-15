@@ -6,7 +6,7 @@
   left: -9999px;
 }
 </style>  
-<% form_for(:comment, @comment) do |f|%>
+<% form_for(:comment, @comment, :url => {:action => 'create' }) do |f|%>
 <fieldset>
   <legend>New Comment</legend>
   <div>
@@ -38,6 +38,12 @@
       <%= f.text_area :body %>
     </div>
   </div>
-  <input id="comment_title" name="comment_title" type="text" />
+  <div id="captcha_block">
+  </div>
+  <input id="comment_title" name="comment_title" type="text" tabindex="-1" />
+  <%= submit_tag "Post comment" %>
 </fieldset>
 <% end %>
+<script type="text/javascript">
+  Recaptcha.create("<%= RCC_PUB %>", "captcha_block", {theme: 'white'});
+</script>
