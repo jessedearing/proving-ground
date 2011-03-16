@@ -6,7 +6,7 @@
   left: -9999px;
 }
 </style>
-<% form_for @comment, :html => {:method => (@comment.id.nil? ? 'post' : 'put'), :id => 'comment_form'} do |f|%>
+<%= form_for @comment, :html => {:method => (@comment.id.nil? ? 'post' : 'put'), :id => 'comment_form'} do |f|%>
 <fieldset>
   <legend>New Comment</legend>
   <div>
@@ -40,6 +40,9 @@
   </div>
   <div id="captcha_block">
   </div>
+  <% if cookies[:recap] %>
+  <label for="recaptcha_response_field" class="error">Please try the ReCaptcha again</label>
+  <% end %>
   <input id="comment_title" name="comment_title" type="text" tabindex="-1" />
   <%= f.submit "Post comment", :class => 'comment_submit' %>
 </fieldset>

@@ -50,7 +50,7 @@ class CommentsController < ApplicationController
         cookies[:recap] = @recaptcha
         @comment.is_complete = false
         @comment.save false
-        redirect_to "/nodes/#{params[:node_id]}?comment_id=#{@comment.id}&#comment_new"
+        redirect_to "/nodes/#{params[:node_id]}?comment_id=#{@comment.id}"
       else
         redirect_to "/nodes/#{params[:node_id]}#comment-#{@comment.id}"
       end
