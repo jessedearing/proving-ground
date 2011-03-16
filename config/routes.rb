@@ -1,8 +1,9 @@
 Jessedearing::Application.routes.draw do
-
   resources :nodes do
     resources :comments
   end
+
+  get 'nodes/:id/:title' => 'nodes#show'
 
   root :to => "nodes#index"
 

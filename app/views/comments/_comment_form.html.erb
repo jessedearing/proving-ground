@@ -1,0 +1,51 @@
+<style type="text/css">
+#comment_title
+{
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+</style>
+<% form_for @comment, :html => {:method => (@comment.id.nil? ? 'post' : 'put'), :id => 'comment_form'} do |f|%>
+<fieldset>
+  <legend>New Comment</legend>
+  <div>
+  <label for="comment_name">
+    Your Name
+  </label>
+  <%= f.text_field :name, :class => "comment_text_field required" %>
+  </div>
+  <div>
+  <label for="comment_email">
+    Your Email
+  </label>
+  <%= f.text_field :email, :class => "comment_text_field required" %>
+    <div>
+      <small>Your email won't be spammed or displayed publicly</small>
+    </div>
+  </div>
+  <div>
+  <label for="comment_url">
+    Your Homepage
+  </label>
+  <%= f.text_field :url, :class => "comment_text_field" %>
+  </div>
+  <div>
+  <label for="comment_body">
+    Your comment
+  </label>
+    <div>
+      <%= f.text_area :body, :class => 'required' %>
+    </div>
+  </div>
+  <div id="captcha_block">
+  </div>
+  <input id="comment_title" name="comment_title" type="text" tabindex="-1" />
+  <%= f.submit "Post comment", :class => 'comment_submit' %>
+</fieldset>
+<% end %>
+<script type="text/javascript">
+  Recaptcha.create("<%= RCC_PUB %>", "captcha_block", {theme: 'white'<%= ', callback: Recaptcha.focus_response_field' if cookies[:recap] %>});
+  $("#comment_form").validate();
+</script>
+

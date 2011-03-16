@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110311050036) do
+ActiveRecord::Schema.define(:version => 20110316035425) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20110311050036) do
     t.integer  "node_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_complete",  :default => false, :null => false
   end
 
   create_table "nodes", :force => true do |t|

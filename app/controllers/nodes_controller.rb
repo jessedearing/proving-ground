@@ -4,6 +4,6 @@ class NodesController < ApplicationController
   end
 
   def show
-    @post = Post.where(:id => params[:id]).first
+    @post = Post.where(:id => params[:id]).includes(:comments).first
   end
 end

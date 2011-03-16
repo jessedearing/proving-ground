@@ -128,15 +128,16 @@ h3.node_title a:hover
   margin: 10px;
 }
 
-span.gravatar
+.no_comments
 {
-  float: left;
+  color: #333;
+  font-style: italic;
 }
 
 .comment_body
 {
-  display: inline;
-  margin-left: 15px;
+  display: block;
+  margin: 10px;
 }
 
 .comment_info
@@ -163,9 +164,41 @@ span.gravatar
 .comment
 {
   font-size: 90%;
+  margin-bottom: 30px;
 }
 
 #comment_new
 {
   display: none;
+}
+
+#comment_new label
+{
+  font-family: 'Droid Sans', 'Arial', sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  display: block;
+}
+
+#comment_new input.comment_text_field, #comment_new textarea
+{
+  width: 100%;
+}
+
+#comment_new input.comment_submit
+{
+  float: right;
+  width: 150px;
+}
+
+#comment_new small
+{
+  font-family: 'Droid Sans', 'Arial', sans-serif;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.error
+{
+  color: #f11;
 }

@@ -4,15 +4,25 @@
   </div>
 </div>
 <div class="clear"></div>
-<div class="grid_16 padded">
+<div class="grid_12 padded" id="comments">
   <h4>Comments</h4>
-  <p><a href="#comment" id="comment_new_link">Post New Comment &raquo;</a></p>
+  <p><a href="javascript:JD.new_comment(<%= params[:id]%>);" id="comment_new_link">Post New Comment &raquo;</a></p>
   <div id="comment_new"></div>
 </div>
 <div class="clear"></div>
 <div class="prefix_1 suffix_3 grid_12">
+  <% if @post.comments.empty? %>
+    <p class="no_comments">Nobody has commented on this yet.</p>
+  <% end %>
   <% @post.comments.each do |comment| %>
     <%= render :partial => "comments/comment", :object => comment %>
   <% end %>
 </div>
 <div class="clear"></div>
+<script type="text/javascript">
+$(document).ready(function() {
+    if(window.location.hash === "#comment_new") {
+      JD.edit_comment(<%= params[:id]%>, <%= params[:comment_id] %>);
+    }
+});
+</script>

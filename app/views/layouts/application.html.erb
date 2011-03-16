@@ -4,6 +4,13 @@
   <title>Jesse Dearing.com</title>
   <%= stylesheet_link_tag :all %>
   <script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAArtvuSGqQMOpQjvKf2hAm2xThLvONqfAEuMVsnAiPkAfmAuHWCRTPKfhA8Ke5iwZOzmnZy0UzoqmFyg"></script>
+  <script type="text/javascript">
+    google.load('jquery', '1.4.2');
+    google.load('jqueryui', '1.8.10');
+  </script>
+  <%= javascript_include_tag "application.js" %>
+  <%= javascript_include_tag "http://www.google.com/recaptcha/api/js/recaptcha_ajax.js" %>
+  <%= javascript_include_tag 'http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js' %>
   <%= csrf_meta_tag %>
   <link href='http://fonts.googleapis.com/css?family=Neuton:regular,italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Anonymous+Pro:regular,bold' rel='stylesheet' type='text/css'>
@@ -17,11 +24,5 @@
   </div>
   <%= render 'layouts/footer' %>
   <%= stylesheet_link_tag 'gist.css' %>
-  <script type="text/javascript">
-    google.load('jquery', '1.5.1');
-    google.load('jqueryui', '1.8.10');
-  </script>
-  <%= javascript_include_tag "application.js" %>
-  <%= javascript_include_tag "http://www.google.com/recaptcha/api/js/recaptcha_ajax.js" %>
 </body>
 </html>
