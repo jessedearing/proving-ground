@@ -1,0 +1,16 @@
+<div class="grid_6 prefix_5 suffix_5">
+  <fieldset>
+    <legend>Login</legend>
+    <%= form_tag do %>
+      <div>
+        <%= label_tag :username, "Username" %>
+        <%= text_field_tag :username %>
+      </div>
+      <div>
+        <%= label_tag :password, "Password" %>
+        <%= text_field_tag :password %>
+      </div>
+      <%= submit_tag "Login" %>
+    <% end %>
+  </fieldset>
+</div>
