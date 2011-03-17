@@ -1,3 +1,4 @@
+/* General */
 body {
   padding: 0;
   margin: 0;
@@ -7,7 +8,8 @@ body {
   overflow-x: hidden;
   background-color: #fff;
   /* font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;*/
-  font-family: 'Neuton', 'Arial', sans-serif;
+  font-family: 'Neuton', 'Palatino', 'Lucida Bright', serif;
+  font-size: 16px;
 }
 
 .padded
@@ -15,6 +17,37 @@ body {
   padding: 15px;
 }
 
+h3
+{
+  font-family: 'Droid Sans', 'Arial', sans-serif;
+  font-size: 30px;
+}
+
+h4
+{
+  font-size: 22px;
+  font-family: 'Droid Sans', 'Arial', sans-serif;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h5
+{
+  font-size: 18px;
+  font-family: 'Droid Sans', 'Arial', sans-serif;
+}
+
+a
+{
+  color: #f00;
+}
+
+.error
+{
+  color: #f11;
+}
+
+/* Header */
 #header
 {
   font-family: "Josefin Slab", serif;
@@ -54,6 +87,7 @@ body {
   margin-bottom: 20px;
 }
 
+/* Footer */
 .black_background
 {
   color: #fff;
@@ -75,43 +109,6 @@ body {
   left: 0;
 }
 
-h3
-{
-  font-family: 'Droid Sans', 'Arial', sans-serif;
-  font-size: 30px;
-}
-
-h4
-{
-  font-size: 22px;
-  font-family: 'Droid Sans', 'Arial', sans-serif;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-h5
-{
-  font-size: 18px;
-  font-family: 'Droid Sans', 'Arial', sans-serif;
-}
-
-a
-{
-  color: #f00;
-}
-
-h3.node_title a
-{
-  color: #000;
-  text-decoration: none;
-}
-
-h3.node_title a:hover
-{
-  color: #000;
-  text-decoration: underline;
-}
-
 #footer ul li
 {
   list-style-type: none;
@@ -128,6 +125,32 @@ h3.node_title a:hover
   margin: 10px;
 }
 
+/* Node */
+h3.node_title a
+{
+  color: #000;
+  text-decoration: none;
+}
+
+h3.node_title a:hover
+{
+  color: #000;
+  text-decoration: underline;
+}
+
+.node_status
+{
+  border-top: solid 1px #aaa;
+  border-bottom: solid 5px #aaa;
+  padding: 5px;
+}
+
+.node_status span.read_more
+{
+  float: right;
+}
+
+/* Comments */
 .no_comments
 {
   color: #333;
@@ -147,18 +170,6 @@ h3.node_title a:hover
   border-bottom: 1px solid #000;
   padding: 10px;
   clear: both;
-}
-
-.node_status
-{
-  border-top: solid 1px #aaa;
-  border-bottom: solid 5px #aaa;
-  padding: 5px;
-}
-
-.node_status span.read_more
-{
-  float: right;
 }
 
 .comment
@@ -196,9 +207,4 @@ h3.node_title a:hover
   font-family: 'Droid Sans', 'Arial', sans-serif;
   font-size: 13px;
   font-style: italic;
-}
-
-.error
-{
-  color: #f11;
 }
