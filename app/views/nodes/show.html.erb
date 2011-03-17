@@ -21,8 +21,12 @@
 <div class="clear"></div>
 <script type="text/javascript">
 $(document).ready(function() {
-    if((/comment_id/).test(window.location.search)) {
-      JD.edit_comment(<%= params[:id]%>, <%= params[:comment_id] %>);
-    }
+  if((/comment_id/).test(window.location.search)) {
+  JD.edit_comment(<%= params[:id]%><%= ",#{params[:comment_id]}" if params[:comment_id] %>);
+  }
+
+  if((/^#comment-/).test(window.location.hash)) {
+    $(window.location.hash).animate({backgroundColor: '#ffffaa'}, 600).animate({backgroundColor: '#ffffff'}, 600);
+  }
 });
 </script>

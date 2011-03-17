@@ -50,5 +50,6 @@
 <script type="text/javascript">
   Recaptcha.create("<%= RCC_PUB %>", "captcha_block", {theme: 'white'<%= ', callback: Recaptcha.focus_response_field' if cookies[:recap] %>});
   $("#comment_form").validate();
+  $('#comment_name').focus();
 </script>
 

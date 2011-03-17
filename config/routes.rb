@@ -5,6 +5,9 @@ Jessedearing::Application.routes.draw do
 
   get 'nodes/:id/:title' => 'nodes#show'
 
+  get 'jd/a/login' => 'admin#login'
+  post 'jd/a/login' => 'admin#authenticate'
+
   root :to => "nodes#index"
 
   # The priority is based upon order of creation:
