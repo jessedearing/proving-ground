@@ -7,6 +7,7 @@ Jessedearing::Application.routes.draw do
 
   get 'jd/a/login' => 'admin#login'
   post 'jd/a/login' => 'admin#authenticate'
+  get 'jd/a/logout' => 'admin#logoff'
 
   root :to => "nodes#index"
 
