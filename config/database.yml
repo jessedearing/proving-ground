@@ -19,7 +19,7 @@ test:
   username: web
   password: ""
 
-development:
+production:
   adapter: mysql
   database: jessedearing_production
   pool: 10
