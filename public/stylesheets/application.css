@@ -12,6 +12,11 @@ body {
   font-size: 16px;
 }
 
+body iframe
+{
+  display: none;
+}
+
 .padded
 {
   padding: 15px;
