@@ -7,7 +7,7 @@
   <% end %>
   <div class="node_status">
     <%= node.publish_date.strftime("%B %d, %Y") %>
-    <span class="read_more"><%= link_to("Read more", node_path(node)) if show_teaser %></span>
+    <span class="read_more"><%= link_to("Read more", "#{node_path(node)}/#{seoize(node.title)}") if show_teaser %></span>
   </div>
 </div>
 
