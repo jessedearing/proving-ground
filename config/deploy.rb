@@ -3,6 +3,8 @@ set :repository,  "ssh://jessed@jessedearing.com/~/code/jessedearing.git"
 set :deploy_to, '/var/www/jessedearing-rails'
 set :rails_env, 'production'
 set :user, 'jessed'
+set :use_sudo, false
+
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
