@@ -3,4 +3,8 @@ module NodesHelper
     title.gsub(' ', '-').gsub("'", '-').gsub(':', '-').
       gsub('?', '-').gsub('/', '-').gsub('#', '-')
   end
+
+  def post_path(id)
+    node_path(id)
+  end
 end

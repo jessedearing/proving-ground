@@ -1,0 +1,51 @@
+<style type="text/css">
+  #node_form label
+  {
+    font-family: 'Droid Sans', 'Arial', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    display: block;
+  }
+
+  #node_form textarea
+  {
+    width: 100%;
+    font-size: 19px;
+  }
+
+  #node_form input
+  {
+    font-size: 19px;
+  }
+
+  #node_form input.field
+  {
+    width: 100%;
+  }
+
+</style>
+<div class="grid_16">
+  <%= form_for @node, :html => {:id => 'node_form'} do |f|%>
+  <div>
+    <%= f.label :title, 'Title' %>
+    <%= f.text_field :title, :class => 'field' %>
+  </div>
+  <div>
+    <%= f.label :type, "Type" %>
+    <%= f.select :type, [:post, :page] %>
+  </div>
+  <div>
+    <%= f.label :can_comment, "Can comment" %>
+    <%= f.check_box :can_comment, :checked => 'checked' %>
+  </div>
+  <div>
+    <%= f.label :body, "Body" %>
+    <%= f.text_area :body %>
+  </div>
+  <div>
+    <%= f.submit "Post" %>
+  </div>
+  <% end %>
+</div>
+<div class="clear"></div>
+

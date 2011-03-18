@@ -37,6 +37,7 @@ class CommentsController < ApplicationController
   end
 
   def delete
+    @comment.delete
   end
 
   private
