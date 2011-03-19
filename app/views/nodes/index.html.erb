@@ -6,3 +6,11 @@
   </div>
 </div>
 <div class="clear"></div>
+<% if @total_post_count > 5 %>
+  <div class="grid_16">
+    <% (@total_post_count / 5).each do |pg| %>
+      <a href="<%= root_path %>?page=<%= pg %>"><%= pg %></a> |
+    <% end %>
+  </div>
+  <div class="clear"></div>
+<% end %>

@@ -3,6 +3,11 @@ Jessedearing::Application.routes.draw do
     resources :comments
   end
 
+  # RSS feeds
+  get 'rss.xml' => 'nodes#rss'
+  # This route is to not break old links to my RSS feed
+  get 'blog/rss.xml' => 'nodes#rss'
+
   get 'nodes/:id/:title' => 'nodes#show'
 
   get 'jd/a/login' => 'admin#login'

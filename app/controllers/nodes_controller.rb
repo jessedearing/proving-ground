@@ -1,8 +1,10 @@
 class NodesController < ApplicationController
-  before_filter :verify_authenticated, :except => [:index, :show]
+  before_filter :verify_authenticated, :except => [:index, :show, :rss]
 
   def index
-    @posts = Post.where("publish_date IS NOT NULL").order(:publish_date).reverse_order()
+    start_row = 5 * (params[:page].nil? ? 0 : params[:page].to_i - 1)
+    @posts = Post.where("publish_date IS NOT NULL").order(:publish_date).limit([start_row, 5]).reverse_order
+    @total_post_count = Post.select("count(*) as total_count").where("publish_date IS NOT NULL").first.total_count.to_i
   end
 
   def show
@@ -13,7 +15,7 @@ class NodesController < ApplicationController
   def edit
     @node = Node.find params[:id]
   end
-  
+
   def new
     @node = Node.new
   end
@@ -37,6 +39,12 @@ class NodesController < ApplicationController
     if @node.save
       redirect_to root_path
     end
+  end
+
+  def rss
+    @nodes = Post.where("publish_date IS NOT NULL").order(:publish_date).limit([0, 5]).reverse_order
+    render :layout => false
+    response.headers["Content-Type"] = "application/xml; charset=utf-8"
   end
 
   private
