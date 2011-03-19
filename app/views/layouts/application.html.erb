@@ -5,12 +5,8 @@
   <title>Jesse Dearing.com</title>
   <meta name="description" content="My name is Jesse Dearing and I am a full-stack developer. This is where I write about stuff that interests me" />
   <meta name="keywords" content="full stack developer,developer,ruby,rails,dearing,php,open source,devops" />
-  <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
-  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js" %>
-  <%= javascript_include_tag "application.js" %>
-  <%= javascript_include_tag "http://www.google.com/recaptcha/api/js/recaptcha_ajax.js" %>
-  <%= javascript_include_tag 'jquery.validate.min.js' %>
+  <%= stylesheet_link_tag :all %>
   <%= csrf_meta_tag %>
   <link href='http://fonts.googleapis.com/css?family=Neuton:regular,italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Anonymous+Pro:regular,bold' rel='stylesheet' type='text/css'>
@@ -24,6 +20,10 @@
   </div>
   <%= render 'layouts/footer' %>
   <%= stylesheet_link_tag 'gist.css', :itemprop => 'gist_styles' %>
+  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js" %>
+  <%= javascript_include_tag "http://www.google.com/recaptcha/api/js/recaptcha_ajax.js" %>
+  <%= javascript_include_tag "application.js" %>
+  <%= javascript_include_tag 'jquery.validate.min.js' %>
   <%= raw google_analytics %>
 </body>
 </html>
