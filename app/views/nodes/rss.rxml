@@ -12,7 +12,7 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
         xml.title node.title
         xml.link "http://jessedearing.com/nodes/#{node.id}"
         xml.description node.teaser
-        xml.guid "#{node.id} at http://jessedearing.com"
+        xml.guid "http://jessedearing.com/nodes/#{node.id}"
       end
     end
   end
