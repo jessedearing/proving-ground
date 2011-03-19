@@ -1,8 +1,9 @@
 class NodesController < ApplicationController
   before_filter :verify_authenticated, :except => [:index, :show, :rss]
   caches_page :new
-  caches_action :show
+  caches_action :show, :rss
   caches_action :index, :if => lambda {params[:page].nil?}
+
   def index
     start_row = 5 * (params[:page].nil? ? 0 : params[:page].to_i - 1)
     @posts = Post.where("publish_date IS NOT NULL").order(:publish_date).limit([start_row, 5]).reverse_order
