@@ -1,5 +1,5 @@
 class NodesController < ApplicationController
-  before_filter :verify_authenticated, :except => [:index, :show, :rss]
+  before_filter :verify_authenticated, :except => [:index, :show, :rss, :old_show]
   caches_page :new
   caches_action :show, :rss
   caches_action :index, :if => lambda {params[:page].nil?}
@@ -13,6 +13,13 @@ class NodesController < ApplicationController
   def show
     @post = Post.where(:id => params[:id]).first
     @comments = @post.comments.where(:is_complete => true)
+  end
+
+  def old_show
+    params[:id] = params[:id].to_i - 2
+    @post = Post.where(:id => params[:id]).first
+    @comments = @post.comments.where(:is_complete => true)
+    render :action => 'show'
   end
 
   def edit
