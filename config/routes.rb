@@ -3,7 +3,7 @@ Jessedearing::Application.routes.draw do
     resources :comments
   end
 
-  get 'blog/nodes/:id' => 'nodes#old_show'
+  get 'blog/node/:id' => 'nodes#old_show'
 
   # RSS feeds
   get 'rss.xml' => 'nodes#rss'
