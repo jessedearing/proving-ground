@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-  <title>Jesse Dearing.com</title>
+  <title>Jesse Dearing.com<%= " - #{@subtitle}" if !@subtitle.nil? %></title>
   <meta name="description" content="My name is Jesse Dearing and I am a full-stack developer. This is where I write about stuff that interests me" />
   <meta name="keywords" content="full stack developer,developer,ruby,rails,dearing,php,open source,devops" />
   <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>

@@ -12,12 +12,14 @@ class NodesController < ApplicationController
 
   def show
     @post = Post.where(:id => params[:id]).first
+    @subtitle = @post.title
     @comments = @post.comments.where(:is_complete => true)
   end
 
   def old_show
     params[:id] = params[:id].to_i - 2
     @post = Post.where(:id => params[:id]).first
+    @subtitle = @post.title
     @comments = @post.comments.where(:is_complete => true)
     render :action => 'show'
   end
