@@ -46,6 +46,7 @@ class CommentsController < ApplicationController
     if params[:comment_title].empty?
       @comment.node_id = params[:node_id]
       @comment.is_complete = true
+      @comment.is_author = session[:authenticated_as] == :admin
       @recaptcha = validate_recap(params, @comment.errors)
       if(!(@recaptcha && @comment.save))
         cookies[:recap] = @recaptcha

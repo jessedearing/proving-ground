@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110316035425) do
+ActiveRecord::Schema.define(:version => 20110320201951) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -22,7 +22,10 @@ ActiveRecord::Schema.define(:version => 20110316035425) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_complete",  :default => false, :null => false
+    t.boolean  "is_author",                       :null => false
   end
+
+  add_index "comments", ["node_id"], :name => "index_comments_on_node_id"
 
   create_table "nodes", :force => true do |t|
     t.string   "title"
@@ -33,5 +36,8 @@ ActiveRecord::Schema.define(:version => 20110316035425) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "nodes", ["publish_date"], :name => "index_nodes_on_publish_date"
+  add_index "nodes", ["type"], :name => "index_nodes_on_type"
 
 end

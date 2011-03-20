@@ -172,7 +172,6 @@ h3.node_title a:hover
 {
   margin-top: 15px;
   border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
   padding: 10px;
   clear: both;
 }
@@ -180,7 +179,8 @@ h3.node_title a:hover
 .comment
 {
   font-size: 90%;
-  margin-bottom: 30px;
+  margin-top: 7px;
+  padding: 7px;
 }
 
 #comment_new
@@ -212,4 +212,9 @@ h3.node_title a:hover
   font-family: 'Droid Sans', 'Arial', sans-serif;
   font-size: 13px;
   font-style: italic;
+}
+
+div.author_comment
+{
+  background-color: #eee;
 }
