@@ -150,7 +150,7 @@ h3.node_title a:hover
   padding: 5px;
 }
 
-.node_status span.read_more
+.node_status span.comment_count
 {
   float: right;
 }

@@ -6,8 +6,8 @@
     <%= raw node.body %>
   <% end %>
   <div class="node_status">
-    <%= node.publish_date.strftime("%B %d, %Y") %>
-    <span class="read_more"><%= link_to("Read more", "#{node_path(node)}/#{seoize(node.title)}") if show_teaser %></span>
+    <span class="read_more"><%= link_to node.publish_date.strftime("%B %d, %Y"), "#{node_path(node)}/#{seoize(node.title)}" %></span>
+    <span class="comment_count"><%= link_to("Comments(#{node.comment_count})","#{node_path(node)}/#{seoize(node.title)}#comments") %></span>
   </div>
 </div>
 

@@ -6,8 +6,8 @@ class NodesController < ApplicationController
 
   def index
     start_row = 5 * (params[:page].nil? ? 0 : params[:page].to_i - 1)
-    @posts = Post.where("publish_date IS NOT NULL").order(:publish_date).limit([start_row, 5]).reverse_order
-    @total_post_count = Post.select("count(*) as total_count").where("publish_date IS NOT NULL").first.total_count.to_i
+    @posts = Post.where("publish_date IS NOT NULL").order(:publish_date).includes(:comments).limit([start_row, 5]).reverse_order
+    @total_post_count = Post.where("publish_date IS NOT NULL").count
   end
 
   def show
