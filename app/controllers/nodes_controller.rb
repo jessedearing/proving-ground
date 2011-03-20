@@ -1,8 +1,8 @@
 class NodesController < ApplicationController
   before_filter :verify_authenticated, :except => [:index, :show, :rss, :old_show]
-  caches_page :new, :if => lambda {session[:authenticated_as] != :admin}
+  caches_page :new
   caches_action :show, :rss, :if => lambda {session[:authenticated_as] != :admin}
-  caches_action :index, :if => lambda {params[:page].nil? || session[:authenticated_as] != :admin}
+  caches_action :index, :if => lambda {params[:page].nil? && session[:authenticated_as] != :admin}
 
   def index
     start_row = 5 * (params[:page].nil? ? 0 : params[:page].to_i - 1)
