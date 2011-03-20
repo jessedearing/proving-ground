@@ -15,7 +15,7 @@ module ApplicationHelper
 
 </script>
 GA
-    if Rails.env == "production"
+    if Rails.env == "production" && session[:authenticated_as] != :admin
       return ga
     else
       return ''

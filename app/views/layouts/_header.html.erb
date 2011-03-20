@@ -1,4 +1,11 @@
 <a href="http://github.com/jessedearing"><img style="position: absolute; top: 0; right: 0; border: 0; padding: 0;" src="https://assets0.github.com/img/4c7dc970b89fd04b81c8e221ba88ff99a06c6b61?repo=&amp;url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_white_ffffff.png&amp;path=" alt="Fork me on GitHub"></a>
+<% if session[:authenticated_as] == :admin %>
+<div class="container_16">
+  <div class="grid_16" style="color: #fff; background-color: #1a1;">
+    <p>Logged in as admin</p>
+  </div>
+</div>
+<% end %>
   <div class="container_16">
     <div id="header" class="grid_5">
       <a href="<%= root_path %>"><h1 class="title_font">Jesse Dearing</h1><h2>Looping Infinitely</h2></a>
