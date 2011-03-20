@@ -17,6 +17,7 @@ class AdminController < ApplicationController
   def logout
     session[:authenticated_as] = nil
     reset_session
+    redirect_to root_path
   end
 
 end
