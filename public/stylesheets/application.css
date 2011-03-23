@@ -155,6 +155,11 @@ h3.node_title a:hover
   float: right;
 }
 
+pre
+{
+  font-family: 'Anonymous Pro', 'Bitstream Vera Sans Mono', 'Courier', monospace;
+}
+
 /* Comments */
 .no_comments
 {
