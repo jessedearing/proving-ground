@@ -1,5 +1,5 @@
 set :application, "JesseDearing.com"
-set :repository,  "ssh://jessed@jessedearing.com/~/code/jessedearing.git"
+set :repository,  "git@github.com:jessedearing/proving-ground.git"
 set :deploy_to, '/var/www/jessedearing-rails'
 set :rails_env, 'production'
 set :user, 'jessed'
