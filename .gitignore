@@ -4,3 +4,6 @@ log/*.log
 tmp/**/*
 tmp/*
 .DS_Store
+config/admin.yml
+config/recaptcha.yml
+config/secret_token.rb

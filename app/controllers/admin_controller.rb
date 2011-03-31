@@ -5,7 +5,11 @@ class AdminController < ApplicationController
   end
 
   def authenticate
-    admin_creds = YAML.load_file("#{Rails.root}/config/admin.yml")
+    if File.exists? "#{Rails.root}/config/admin.yml"
+      admin_creds = YAML.load_file("#{Rails.root}/config/admin.yml")
+    else
+      admin_creds = YAML.load_file("/etc/jessedearing/admin.yml")
+    end
     if admin_creds["username"] == params[:username] && admin_creds["password"] == Digest::SHA1.hexdigest(params[:password])
       session[:authenticated_as] = :admin
       redirect_to root_path
