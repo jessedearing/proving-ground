@@ -15,6 +15,7 @@ timeout 30
 # Listen on a Unix data socket
 listen '/var/run/jessedearing-unicorn.sock', :backlog => 2048
 
+pid(RAILS_ROOT + '/tmp/pids/unicorn.pid')
 
 ##
 # REE
