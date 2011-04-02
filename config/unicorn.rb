@@ -55,7 +55,7 @@ after_fork do |server, worker|
   # sockets, e.g. db connection
 
   ActiveRecord::Base.establish_connection
-  CHIMNEY.client.connect_to_server
+  # CHIMNEY.client.connect_to_server
   # Redis and Memcached would go here but their connections are established
   # on demand, so the master never opens a socket
 
