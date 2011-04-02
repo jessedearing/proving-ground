@@ -2,8 +2,9 @@ class NodesController < ApplicationController
   before_filter :verify_authenticated, :except => [:index, :show, :rss, :old_show]
 
   def index
+    logger.info "test"
     start_row = 5 * (params[:page].nil? ? 0 : params[:page].to_i - 1)
-    @posts = Post.where("publish_date IS NOT NULL").order(:publish_date).includes(:comments).limit([start_row, 5]).reverse_order
+    @posts = Post.where("publish_date IS NOT NULL").order(:publish_date).includes(:comments).limit("#{start_row.to_i}, 5").reverse_order
     @total_post_count = Post.where("publish_date IS NOT NULL").count
   end
 
@@ -35,6 +36,8 @@ class NodesController < ApplicationController
     else
       @node = Page.new params[:node]
     end
+
+    @node.publish_date = Time.now
 
     if @node.save
       redirect_to root_path
