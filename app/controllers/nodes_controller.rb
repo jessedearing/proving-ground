@@ -8,20 +8,15 @@ class NodesController < ApplicationController
     else
       @posts = Post.top5.published.order(:publish_date).includes(:comments).reverse_order
     end
-    @total_post_count = Post.published.count
+    @total_post_count = Post.published.size
   end
 
   def show
     @post = Post.where(:id => params[:id]).first
-    @subtitle = @post.title
-    @comments = @post.comments.where(:is_complete => true)
   end
 
   def old_show
-    params[:id] = params[:id].to_i - 2
-    @post = Post.where(:id => params[:id]).first
-    @subtitle = @post.title
-    @comments = @post.comments.where(:is_complete => true)
+    @post = Post.where(:id => params[:id].to_i - 2).first
     render :action => 'show'
   end
 
@@ -57,7 +52,7 @@ class NodesController < ApplicationController
   end
 
   def rss
-    @nodes = Post.where("publish_date IS NOT NULL").order(:publish_date).limit("0, 5").reverse_order
+    @nodes = Post.top5.published.order(:publish_date).reverse_order
     render :layout => false
     response.headers["Content-Type"] = "application/xml; charset=utf-8"
   end

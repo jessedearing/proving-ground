@@ -5,13 +5,6 @@ class CommentsController < ApplicationController
   end
 
   def show
-    # @comment = Comment.where({:node_id => params[:node_id], :id => params[:id]}).first
-    # if @comment.is_complete
-    #   redirect_to root_path
-    # else
-    #   @comment_action = 'update'
-    #   render :action => 'new', :layout => false
-    # end
   end
 
   def new

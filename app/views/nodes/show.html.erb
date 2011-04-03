@@ -1,3 +1,6 @@
+<%
+title @post.title
+%>
 <div class="grid_16" id="main_content">
   <div class="padded">
     <%= render :partial => "node", :locals => {:show_teaser => false}, :object => @post %>
@@ -11,10 +14,10 @@
 </div>
 <div class="clear"></div>
 <div class="prefix_1 suffix_3 grid_12">
-  <% if @comments.empty? %>
-    <p class="no_comments">Nobody has commented on this yet.</p>
+  <% if @post.comments.complete.present? %>
+    <%= render @post.comments.complete %>
   <% else %>
-    <%= render @comments %>
+    <p class="no_comments">Nobody has commented on this yet.</p>
   <% end %>
 </div>
 <div class="clear"></div>
