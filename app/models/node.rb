@@ -1,5 +1,7 @@
 class Node < ActiveRecord::Base
   has_many :comments
+  scope :top5, limit("0, 5")
+  scope :published, where("publish_date IS NOT NULL")
 
   def comment_count
     comment_ct = 0
