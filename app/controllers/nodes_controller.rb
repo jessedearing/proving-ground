@@ -1,8 +1,7 @@
 class NodesController < ApplicationController
-  before_filter :verify_authenticated, :except => [:index, :show, :rss, :old_show]
+  before_filter :verify_authenticated, :only => [:new, :edit, :create, :update]
 
   def index
-    logger.info "test"
     start_row = 5 * (params[:page].nil? ? 0 : params[:page].to_i - 1)
     @posts = Post.where("publish_date IS NOT NULL").order(:publish_date).includes(:comments).limit("#{start_row.to_i}, 5").reverse_order
     @total_post_count = Post.where("publish_date IS NOT NULL").count
@@ -54,7 +53,7 @@ class NodesController < ApplicationController
   end
 
   def rss
-    @nodes = Post.where("publish_date IS NOT NULL").order(:publish_date).limit([0, 5]).reverse_order
+    @nodes = Post.where("publish_date IS NOT NULL").order(:publish_date).limit("0, 5").reverse_order
     render :layout => false
     response.headers["Content-Type"] = "application/xml; charset=utf-8"
   end

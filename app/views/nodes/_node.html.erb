@@ -1,13 +1,13 @@
 <div>
-  <h3 class="node_title"><%= link_to(node.title, "#{node_path(node)}/#{seoize(node.title)}") %></h3>
+  <h3 class="node_title"><%= link_to(node.title, node) %></h3>
   <% if show_teaser %>
     <%= raw node.teaser %>
   <% else %>
     <%= raw node.body %>
   <% end %>
   <div class="node_status">
-    <span class="read_more"><%= link_to node.publish_date.strftime("%B %d, %Y"), "#{node_path(node)}/#{seoize(node.title)}" %></span>
-    <span class="comment_count"><%= link_to("Comments(#{node.comment_count})","#{node_path(node)}/#{seoize(node.title)}#comments") %></span>
+    <span class="read_more"><%= link_to node.publish_date.strftime("%B %d, %Y"), node %></span>
+    <span class="comment_count"><%= link_to("Comments(#{node.comment_count})",node_path(node, :anchor => 'comments')) %></span>
   </div>
 </div>
 
