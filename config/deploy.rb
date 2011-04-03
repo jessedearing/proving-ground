@@ -21,6 +21,6 @@ namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} kill -HUP #{File.read(File.join(current_path,'../shared/pids/unicorn.pid'))}"
+    run "#{sudo} kill -USR2 $(cat #{current_path}/tmp/pids/unicorn.pid)"
   end
 end
