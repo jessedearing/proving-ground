@@ -13,9 +13,8 @@
 <div class="prefix_1 suffix_3 grid_12">
   <% if @comments.empty? %>
     <p class="no_comments">Nobody has commented on this yet.</p>
-  <% end %>
-  <% @comments.each do |comment| %>
-    <%= render :partial => "comments/comment", :object => comment %>
+  <% else %>
+    <%= render @comments %>
   <% end %>
 </div>
 <div class="clear"></div>
