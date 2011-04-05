@@ -7,6 +7,7 @@ title @post.title
   </div>
 </div>
 <div class="clear"></div>
+<% if @post.can_comment? %>
 <div class="grid_12 padded" id="comments">
   <h4>Comments</h4>
   <p><a href="javascript:JD.new_comment(<%= params[:id] %>);" id="comment_new_link">Post New Comment &raquo;</a></p>
@@ -20,6 +21,7 @@ title @post.title
     <p class="no_comments">Nobody has commented on this yet.</p>
   <% end %>
 </div>
+<% end %>
 <div class="clear"></div>
 <script type="text/javascript">
 $(document).ready(function() {

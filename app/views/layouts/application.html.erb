@@ -25,5 +25,6 @@
   <%= javascript_include_tag "application.js" %>
   <%= javascript_include_tag 'jquery.validate.min.js' %>
   <%= raw google_analytics %>
+  <%= yield(:javascripts) %>
 </body>
 </html>
