@@ -25,7 +25,7 @@ class NodesController < ApplicationController
   end
 
   def new
-    @node = Node.new
+    @node = Node.new(:publish_date => Time.now)
   end
 
   def create

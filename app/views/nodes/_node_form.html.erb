@@ -39,6 +39,10 @@
     <%= f.check_box :can_comment, :checked => 'checked' %>
   </div>
   <div>
+    <%= f.label :publish_date, "Publish date" %>
+    <%= f.text_field :publish_date, :class => 'datepicker' %>
+  </div>
+  <div>
     <%= f.label :body, "Body" %>
     <%= f.text_area :body %>
   </div>
@@ -48,4 +52,3 @@
   <% end %>
 </div>
 <div class="clear"></div>
-
