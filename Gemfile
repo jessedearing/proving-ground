@@ -11,6 +11,7 @@ gem 'ruby-recaptcha'
 
 # Use unicorn as the web server
 gem 'unicorn'
+gem 'sinatra'
 
 # Deploy with Capistrano
 # gem 'capistrano'

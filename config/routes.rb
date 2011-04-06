@@ -1,3 +1,4 @@
+require "#{File.dirname(__FILE__)}/../app/resume/resumeapi"
 Jessedearing::Application.routes.draw do
   resources :nodes do
     resources :comments
@@ -16,6 +17,8 @@ Jessedearing::Application.routes.draw do
   get 'jd/a/login' => 'admin#login'
   post 'jd/a/login' => 'admin#authenticate'
   get 'jd/a/logout' => 'admin#logout'
+
+  match 'resume' => ResumeApi
 
   root :to => "nodes#index"
 

@@ -1,0 +1,44 @@
+<%= @resume.name %>
+<%= '=' * @resume.name.size %>
+
+Objective
+---------
+<%= @resume.objective %>
+
+Technologies
+------------
+
+<% @resume.technologies.each do |tech| %>
+  * <%= tech %><% end %>
+
+Experience
+----------
+
+<% @resume.experience.each do |place, experience| %>
+###<%= place %>
+<%= experience['Start Date'] %> - <%= experience['End Date'] %>
+
+**<%= experience['Position'] %>**  
+_<%= experience['Department'] %>_
+
+####Responsibilities
+  <% experience['Responsibilities'].each do |responsibility| %>
+  * <%= responsibility %> <% end %>
+<% end %>
+
+Academic Activities
+-------------------
+
+<% @resume.academic_activities.each do |organization, activity| %>
+###<%= organization %>
+<% activity.each do |responsibility| %>
+  * <%= responsibility %> <% end %>
+<% end %>
+
+Education
+=========
+
+<% @resume.education.each do |school, education| %>
+  **Degree**: <%= education['Degree'] %>
+  **GPA**: <%= education['GPA'] %>
+<% end %>

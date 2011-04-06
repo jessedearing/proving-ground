@@ -1,0 +1,120 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Resume for <%= @resume.name %></title>
+  <meta name="description" content="">
+  <meta name="author" content="<%= @resume.name %>">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/960.css" />
+  <link href='http://fonts.googleapis.com/css?family=Crimson+Text:regular,regularitalic,bold,bolditalic' rel='stylesheet' type='text/css'>
+  <style type="text/css">
+    body *
+    {
+      font-family: 'Crimson Text', 'Times New Roman', Serif;
+      font-size: 18px;
+    }
+
+    h1
+    {
+      font-size: 46px;
+    }
+
+    h2
+    {
+      font-size: 28px;
+    }
+
+    h3
+    {
+      font-size: 22px;
+    }
+
+    h4
+    {
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container_12">
+    <div class="grid_12" style="border-bottom: solid 1px #000;">
+      <h1><%= @resume.name %></h1>
+    </div>
+    <div class="clear"></div>
+    <div id="objective" class="grid_12">
+    <h2>Objective</h2>
+    <p><%= @resume.objective %></p>
+  </div>
+  <div class="clear"></div>
+  <div id="technologies" class="grid_12">
+    <h2>Technologies</h2>
+    <ul>
+      <% @resume.technologies.each do |tech| %>
+        <li><%= tech %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="clear"></div>
+  <div id="experience" class="grid_12">
+    <h2>Experience</h2>
+    <% @resume.experience.each do |place, experience| %>
+      <h3><%= place %></h3>
+      <div style="float: right;">
+        <%= experience['Start Date'] %> - <%= experience['End Date'] %>
+      </div>
+      <div>
+        <em><%= experience['Position'] %></em>
+        <br />
+        <small><%= experience['Department'] %></small>
+      </div>
+      <div id="responsibilities">
+        <h4>Responsibilities</h4>
+        <ul>
+          <% experience['Responsibilities'].each do |responsibility| %>
+            <li><%= responsibility %></li>
+          <% end %>
+        </ul>
+    <% end %>
+      </div>
+      <div class="clear"></div>
+      <div id="academic-activities" class="grid_12">
+        <h2>Academic Activities</h4>
+        <% @resume.academic_activities.each do |organization, activity| %>
+          <h3><%= organization %></h3>
+          <ul>
+            <% activity.each do |responsibility| %>
+              <li><%= responsibility %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+      <div class="clear"></div>
+      <div id="education" class="grid_12">
+        <h2>Education</h2>
+        <% @resume.education.each do |school, education| %>
+          <h3><%= school %></h3>
+          <div style="float: right;">
+            <%= education["Start Date"] %> - <%= education["End Date"] %>
+          </div>
+          <dl>
+            <dt>Degree</dt>
+            <dd><%= education["Degree"] %></dd>
+            <dt>GPA</dt>
+            <dd><%= education["GPA"] %></dd>
+          </dl>
+        <% end %>
+      </div>
+      <div class="clear"></div>
+</body>
+</html>
+
