@@ -1,7 +1,6 @@
 require 'sinatra/base'
 require 'yaml'
 require 'erb'
-require 'rtf'
 require "#{Rails.root}/app/models/resume"
 require 'active_support/all'
 
@@ -59,25 +58,5 @@ class ResumeApi < Sinatra::Base
 
   def render_xml
     @@resume.to_xml
-  end
-
-  def render_rtf
-    doc = Document.new(Font.new(Font::SWISS, 'Verdana'))
-    fonts = {}
-    fonts[:serif] = Font.new(Font::ROMAN, 'Times New Roman')
-    fonts[:sans_serif] = Font.new(Font::SWISS, 'Verdana')
-
-    styles = {}
-    styles[:name] = CharacterStyle.new
-    styles[:name].font = fonts[:serif]
-    styles[:name].font_size = 40
-
-    doc.paragraph do |p|
-      p.apply(styles[:name]) do |name|
-        name << @resume.name
-        name.line_break
-      end
-    end
-    doc.to_rtf
   end
 end
