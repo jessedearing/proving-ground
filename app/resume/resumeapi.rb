@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'yaml'
 require 'erb'
+require 'rtf'
 require "#{Rails.root}/app/models/resume"
 require 'active_support/all'
 
@@ -20,12 +21,19 @@ class ResumeApi < Sinatra::Base
     @@resume ||= YAML.load_file("#{Rails.root.to_s}/db/resume.yaml")
     @resume = Resume.new(@@resume)
     case format.to_sym
-    when :html then render_html
+    when :html, :htm then render_html
     when :markdown, :md then render_markdown
     when :yaml, :yml then render_yaml
     when :json, :js then render_json
     when :xml then render_xml
+    when :txt, :text then render_text
+    else unsupported_media_type
     end
+  end
+
+  def unsupported_media_type
+    status 415
+    "Unsupported media type"
   end
 
   def render_html
@@ -34,6 +42,11 @@ class ResumeApi < Sinatra::Base
 
   def render_yaml
     @@resume_raw
+  end
+
+  def render_text
+    # come up with a different template later
+    render_markdown
   end
 
   def render_markdown
@@ -46,5 +59,25 @@ class ResumeApi < Sinatra::Base
 
   def render_xml
     @@resume.to_xml
+  end
+
+  def render_rtf
+    doc = Document.new(Font.new(Font::SWISS, 'Verdana'))
+    fonts = {}
+    fonts[:serif] = Font.new(Font::ROMAN, 'Times New Roman')
+    fonts[:sans_serif] = Font.new(Font::SWISS, 'Verdana')
+
+    styles = {}
+    styles[:name] = CharacterStyle.new
+    styles[:name].font = fonts[:serif]
+    styles[:name].font_size = 40
+
+    doc.paragraph do |p|
+      p.apply(styles[:name]) do |name|
+        name << @resume.name
+        name.line_break
+      end
+    end
+    doc.to_rtf
   end
 end
