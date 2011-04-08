@@ -24,3 +24,7 @@ namespace :deploy do
     run "#{sudo} kill -USR2 $(cat #{current_path}/tmp/pids/unicorn.pid)"
   end
 end
+
+task :bundle do
+  run "cd #{current_path} && bundle"
+end
