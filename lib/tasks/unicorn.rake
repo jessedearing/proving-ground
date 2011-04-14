@@ -9,5 +9,8 @@ namespace :unicorn do
     Process.kill("QUIT", pid)
   end
 
-  task :restart => [:stop, :start]
+  task :restart do
+    pid = File.read("#{Rails.root}/tmp/pids/unicorn.pid").to_i
+    Process.kill("USR2", pid)
+  end
 end
