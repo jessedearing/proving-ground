@@ -45,7 +45,7 @@ class ResumeApi < Sinatra::Base
 
   def render_text
     # come up with a different template later
-    render_markdown
+    redirect to('/resume.md'), 307
   end
 
   def render_markdown
