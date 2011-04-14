@@ -1,6 +1,12 @@
 <div class="grid_16" id="main_content">
   <div class="padded">
-    <%= render :partial => "node", :locals => { :show_teaser => true }, :collection => @posts %>
+    <% if params[:page] %>
+      <%= render :partial => "node", :locals => { :show_teaser => true }, :collection => @posts %>
+    <% else %>
+      <% cache(:action => 'index') do %>
+          <%= render :partial => "node", :locals => { :show_teaser => true }, :collection => @posts %>
+      <% end %>
+<% end %>
   </div>
 </div>
 <div class="clear"></div>

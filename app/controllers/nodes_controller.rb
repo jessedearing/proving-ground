@@ -1,22 +1,24 @@
 class NodesController < ApplicationController
+  include ExpireCache
   before_filter :verify_authenticated, :only => [:new, :edit, :create, :update]
+  after_filter :expire_posts_cache, :only => [:update, :create]
 
   def index
     start_row = 6 * (params[:page].nil? ? 0 : params[:page].to_i - 1)
     if start_row > 0
-      @posts = Post.published.limit("#{start_row}, 6").order(:publish_date).includes(:comments).reverse_order
+      @posts = Post.published.limit("#{start_row}, 6").order('nodes.publish_date').includes(:comments).reverse_order
     else
-      @posts = Post.top5.published.order(:publish_date).includes(:comments).reverse_order
+      @posts = Post.top5.published.order('nodes.publish_date').includes(:comments).reverse_order
+      @total_post_count = Post.published.size
     end
-    @total_post_count = Post.published.size
   end
 
   def show
-    @post = Post.where(:id => params[:id]).first
+    @post = load_node(params[:id])
   end
 
   def old_show
-    @post = Post.where(:id => params[:id].to_i - 2).first
+    @post = load_node(params[:id].to_i - 2)
     render :action => 'show'
   end
 
@@ -63,5 +65,18 @@ class NodesController < ApplicationController
     if session[:authenticated_as] != :admin
       redirect_to root_path
     end
+  end
+
+  def load_node(id)
+    id = id.to_s
+    if Rails.cache.read("node#{id}")
+      # Dummy call to load Post class so that Marshal.load works
+      Post.class
+      post = Marshal.load(Rails.cache.read("node#{id}"))
+    else
+      post = Post.where(:id => id).first
+      Rails.cache.write("node#{id}", Marshal.dump(post))
+    end
+    post
   end
 end

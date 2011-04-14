@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   include ReCaptcha::AppHelper
+  include ExpireCache
 
   def index
   end
@@ -30,7 +31,6 @@ class CommentsController < ApplicationController
   end
 
   def delete
-    @comment.delete
   end
 
   private
@@ -41,13 +41,14 @@ class CommentsController < ApplicationController
       @comment.is_complete = true
       @comment.is_author = session[:authenticated_as] == :admin
       @recaptcha = validate_recap(params, @comment.errors)
-      if(!(@recaptcha && @comment.save))
+      if(@recaptcha && @comment.save)
+        expire_posts_cache(params[:node_id])
+        redirect_to node_path(params[:node_id]) + "#comment-#{@comment.id}"
+      else
         cookies[:recap] = @recaptcha
         @comment.is_complete = false
         @comment.save false
-        redirect_to "/nodes/#{params[:node_id]}?comment_id=#{@comment.id}"
-      else
-        redirect_to "/nodes/#{params[:node_id]}#comment-#{@comment.id}"
+        redirect_to node_path(params[:node_id], :comment_id => @comment.id)
       end
     end
   end

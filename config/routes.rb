@@ -12,13 +12,12 @@ Jessedearing::Application.routes.draw do
   # This route is to not break old links to my RSS feed
   get 'blog/rss.xml' => 'nodes#rss'
 
-  get 'nodes/:id/:title' => 'nodes#show'
-
   get 'jd/a/login' => 'admin#login'
   post 'jd/a/login' => 'admin#authenticate'
   get 'jd/a/logout' => 'admin#logout'
 
   match 'resume' => ResumeApi
+
 
   root :to => "nodes#index"
 
