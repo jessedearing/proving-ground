@@ -18,12 +18,23 @@ role :db,  "69.164.207.237", :primary => true # This is where Rails migrations w
 # these http://github.com/rails/irs_process_scripts
 
 namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
+  task :start do
+    run "cd #{current_path} && #{sudo} unicorn_rails -c config/unicorn.rb -E #{rails_env} -D"
+  end
+  task :stop do
+    run "#{sudo} kill -QUIT $(cat #{current_path}/tmp/pids/unicorn.pid)"
+  end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{sudo} kill -USR2 $(cat #{current_path}/tmp/pids/unicorn.pid)"
   end
+  task :create_cache_dirs do
+    run "cd #{current_path} && #{sudo} mkdir tmp/cache"
+    run "cd #{current_path} && #{sudo} mkdir tmp/sessions"
+    run "cd #{current_path} && #{sudo} chown www-data:www-data tmp"
+  end
 end
+
+after("deploy:symlink", "deploy:create_cache_dirs")
 
 task :bundle do
   run "cd #{current_path} && bundle"
