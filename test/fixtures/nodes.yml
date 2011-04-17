@@ -4,8 +4,51 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one:
+  title: Post 1
+  body: Post 1 <!-- break --> Details
+  publish_date: 2011-04-17 14:19:00 -0500
+  can_comment: true
+two:
+  title: Post 2
+  body: Post 2 <!-- break --> Details
+  publish_date: 2011-04-17 14:19:00 -0500
+  can_comment: true
+three:
+  title: Post 3
+  body: Post 3 <!-- break --> Details
+  publish_date: 2011-04-17 14:19:00 -0500
+  can_comment: true
+four:
+  title: Post 4
+  body: Post 4 <!-- break --> Details
+  publish_date: 2011-04-17 14:19:00 -0500
+  can_comment: true
+five:
+  title: Post 5
+  body: Post 5 <!-- break --> Details
+  publish_date: 2011-04-17 14:19:00 -0500
+  can_comment: true
+six:
+  title: Post 6
+  body: Post 6 <!-- break --> Details
+  publish_date: 2011-04-17 14:19:00 -0500
+  can_comment: true
+seven:
+  title: Post 7
+  body: Post 7 <!-- break --> Details
+  publish_date: 2011-04-17 14:19:00 -0500
+  can_comment: true
+eight:
+  title: Post 8
+  body: Post 8 <!-- break --> Details
+  publish_date: 2011-04-17 14:19:00 -0500
+  can_comment: true
+nine:
+  title: Post 9
+  body: Post 9 <!-- break --> Details
+  can_comment: true
+ten:
+  title: Post 10
+  body: Post 10 <!-- break --> Details
+  can_comment: false

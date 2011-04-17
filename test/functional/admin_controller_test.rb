@@ -5,10 +5,4 @@ class AdminControllerTest < ActionController::TestCase
     get :login
     assert_response :success
   end
-
-  test "should get authenticate" do
-    get :authenticate
-    assert_response :success
-  end
-
 end
