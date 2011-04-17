@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -12,6 +12,11 @@ gem 'ruby-recaptcha'
 # Use unicorn as the web server
 gem 'unicorn'
 gem 'sinatra'
+
+group :development, :test do
+  gem "rspec-rails", ">= 2.5.0"
+end
+
 
 # Deploy with Capistrano
 # gem 'capistrano'
