@@ -1,7 +1,6 @@
 class NodesController < ApplicationController
   include ExpireCache
   before_filter :verify_authenticated, :only => [:new, :edit, :create, :update]
-  after_filter :expire_posts_cache, :only => [:update, :create]
 
   def index
     start_row = 6 * (params[:page].nil? ? 0 : params[:page].to_i - 1)
@@ -37,9 +36,9 @@ class NodesController < ApplicationController
       @node = Page.new params[:node]
     end
 
-    @node.publish_date = Time.now
-
     if @node.save
+      expire_posts_cache(@node.id)
+      logger.debug "node id: #{@node.id}"
       redirect_to root_path
     end
   end
@@ -49,6 +48,8 @@ class NodesController < ApplicationController
     @node.update_attributes params[:post]
 
     if @node.save
+      expire_posts_cache(@node.id)
+      logger.debug "node id: #{@node.id}"
       redirect_to root_path
     end
   end
