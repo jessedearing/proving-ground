@@ -1,6 +1,6 @@
 class Node < ActiveRecord::Base
   has_many :comments
-  scope :top5, limit("0, 6")
+  scope :top_posts, limit("0, #{POSTS_ON_FRONT_PAGE}")
   scope :published, where("nodes.publish_date < ?", Time.now)
 
   # Produces a count of the comments

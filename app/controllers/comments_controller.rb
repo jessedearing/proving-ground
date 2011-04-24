@@ -38,16 +38,13 @@ class CommentsController < ApplicationController
   def save_comment
     if params[:comment_title].empty?
       @comment.node_id = params[:node_id]
-      @comment.is_complete = true
       @comment.is_author = session[:authenticated_as] == :admin
       @recaptcha = validate_recap(params, @comment.errors)
-      if(@recaptcha && @comment.save)
+      if(@comment.save_with_recap(@recaptcha))
         expire_posts_cache(params[:node_id])
         redirect_to node_path(params[:node_id]) + "#comment-#{@comment.id}"
       else
         cookies[:recap] = @recaptcha
-        @comment.is_complete = false
-        @comment.save false
         redirect_to node_path(params[:node_id], :comment_id => @comment.id)
       end
     end

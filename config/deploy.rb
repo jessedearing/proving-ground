@@ -1,3 +1,5 @@
+require 'bundler/capistrano'
+
 set :application, "JesseDearing.com"
 set :repository,  "git@github.com:jessedearing/proving-ground.git"
 set :deploy_to, '/var/www/jessedearing-rails'
@@ -35,7 +37,3 @@ namespace :deploy do
 end
 
 after("deploy:symlink", "deploy:create_cache_dirs")
-
-task :bundle do
-  run "cd #{current_path} && bundle"
-end

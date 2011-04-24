@@ -10,7 +10,5 @@
   </div>
 </div>
 <div class="clear"></div>
-<% if @total_post_count > 6 && @posts.size == 6 %>
-  <%= raw paging %>
-  <div class="clear"></div>
-<% end %>
+<%= raw paging(@total_post_count, @posts.size) %>
+<div class="clear"></div>

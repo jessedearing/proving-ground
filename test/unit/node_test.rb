@@ -1,9 +1,9 @@
 require 'test_helper'
 
 class NodeTest < ActiveSupport::TestCase
-  test "Node returns 6 nodes with top5 scope" do
-    assert Node.top5.all.size == 6
-    assert Node.all.size > 6
+  test "Node returns #{POSTS_ON_FRONT_PAGE} nodes with top_posts scope" do
+    assert Node.top_posts.all.size == POSTS_ON_FRONT_PAGE
+    assert Node.all.size > POSTS_ON_FRONT_PAGE
   end
 
   test "Node publish returns only published nodes" do

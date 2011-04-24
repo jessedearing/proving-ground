@@ -3,13 +3,13 @@ class NodesController < ApplicationController
   before_filter :verify_authenticated, :only => [:new, :edit, :create, :update]
 
   def index
-    start_row = 6 * (params[:page].nil? ? 0 : params[:page].to_i - 1)
+    start_row = POSTS_ON_FRONT_PAGE * (params[:page].nil? ? 0 : params[:page].to_i - 1)
     if start_row > 0
-      @posts = Post.published.limit("#{start_row}, 6").order('nodes.publish_date').includes(:comments).reverse_order
+      @posts = Post.published.limit("#{start_row}, #{POSTS_ON_FRONT_PAGE}").order('nodes.publish_date').includes(:comments).reverse_order
     else
-      @posts = Post.top5.published.order('nodes.publish_date').includes(:comments).reverse_order
-      @total_post_count = Post.published.size
+      @posts = Post.top_posts.published.order('nodes.publish_date').includes(:comments).reverse_order
     end
+    @total_post_count = Post.published.size
   end
 
   def show
@@ -30,15 +30,10 @@ class NodesController < ApplicationController
   end
 
   def create
-    if params[:node][:type] == "post"
-      @node = Post.new params[:node]
-    else
-      @node = Page.new params[:node]
-    end
+    @node = Node.new params[:node]
 
     if @node.save
       expire_posts_cache(@node.id)
-      logger.debug "node id: #{@node.id}"
       redirect_to root_path
     end
   end
@@ -49,13 +44,12 @@ class NodesController < ApplicationController
 
     if @node.save
       expire_posts_cache(@node.id)
-      logger.debug "node id: #{@node.id}"
       redirect_to root_path
     end
   end
 
   def rss
-    @nodes = Post.top5.published.order(:publish_date).reverse_order
+    @nodes = Post.top_posts.published.order(:publish_date).reverse_order
     render :layout => false
     response.headers["Content-Type"] = "application/xml; charset=utf-8"
   end
