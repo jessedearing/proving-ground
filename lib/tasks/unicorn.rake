@@ -14,3 +14,5 @@ namespace :unicorn do
     Process.kill("USR2", pid)
   end
 end
+
+task :server => "unicorn:start"
