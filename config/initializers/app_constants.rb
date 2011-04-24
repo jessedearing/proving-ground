@@ -1,0 +1,1 @@
+::POSTS_ON_FRONT_PAGE = 6
