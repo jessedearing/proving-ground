@@ -6,20 +6,15 @@ gem 'rails', '3.0.7'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'mysql'
 gem 'ruby-recaptcha'
+gem 'mysql2'
 
 # Use unicorn as the web server
 gem 'unicorn'
 gem 'sinatra'
 
-group :development, :test do
-  gem "rspec-rails", ">= 2.5.0"
-end
-
-
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
