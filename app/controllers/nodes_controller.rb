@@ -30,7 +30,10 @@ class NodesController < ApplicationController
   end
 
   def create
-    @node = Node.new params[:node]
+    @node = case params[:node][:type]
+    when 'post' then Post.new params[:node]
+    when 'page' then Page.new params[:node]
+    end
 
     if @node.save
       expire_posts_cache(@node.id)
