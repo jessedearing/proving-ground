@@ -66,15 +66,6 @@ class NodesController < ApplicationController
   end
 
   def load_node(id)
-    id = id.to_s
-    if Rails.cache.read("node#{id}")
-      # Dummy call to load Post class so that Marshal.load works
-      Post.class
-      post = Marshal.load(Rails.cache.read("node#{id}"))
-    else
-      post = Post.where(:id => id).first
-      Rails.cache.write("node#{id}", Marshal.dump(post))
-    end
-    post
+    Post.where(:id => id).first
   end
 end
