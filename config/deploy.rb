@@ -32,7 +32,7 @@ namespace :deploy do
   task :create_cache_dirs do
     run "cd #{current_path} && #{sudo} mkdir tmp/cache"
     run "cd #{current_path} && #{sudo} mkdir tmp/sessions"
-    run "cd #{current_path} && #{sudo} chown www-data:www-data tmp"
+    run "cd #{current_path} && #{sudo} chown -R www-data:www-data tmp"
   end
   task :copy_db_config do
     run "cp -f /etc/jessedearing/database.yml #{current_path}/config/"
