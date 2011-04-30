@@ -52,6 +52,11 @@ a
   color: #f11;
 }
 
+code
+{
+  font-family: 'Anonymous Pro', 'Bitstream Vera Sans Mono', 'Andale Mono', 'Courier New', monospace;
+}
+
 /* Header */
 #header
 {
