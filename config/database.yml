@@ -5,7 +5,7 @@ development:
   database: jessedearing_development
   pool: 5
   timeout: 5000
-  username: web
+  username: root
   password: ""
 
 # Warning: The database defined as "test" will be erased and
@@ -16,7 +16,7 @@ test:
   database: jessedearing_test
   pool: 5
   timeout: 5000
-  username: web
+  username: root
   password: ""
 
 production:
