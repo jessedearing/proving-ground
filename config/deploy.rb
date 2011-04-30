@@ -35,7 +35,7 @@ namespace :deploy do
     run "cd #{current_path} && #{sudo} chown www-data:www-data tmp"
   end
   task :copy_db_config do
-    run "cp /etc/jessedearing/database.yml #{current_path}/config/"
+    run "cp -f /etc/jessedearing/database.yml #{current_path}/config/"
   end
 end
 
