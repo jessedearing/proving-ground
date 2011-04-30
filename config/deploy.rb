@@ -34,6 +34,10 @@ namespace :deploy do
     run "cd #{current_path} && #{sudo} mkdir tmp/sessions"
     run "cd #{current_path} && #{sudo} chown www-data:www-data tmp"
   end
+  task :copy_db_config do
+    run "cp /etc/jessedearing/database.yml #{current_path}/config/"
+  end
 end
 
 after("deploy:symlink", "deploy:create_cache_dirs")
+after("deploy:symlink", "deploy:copy_db_config")
