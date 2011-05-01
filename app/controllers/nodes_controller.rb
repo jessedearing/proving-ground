@@ -10,6 +10,9 @@ class NodesController < ApplicationController
       @posts = Post.top_posts.published.order('nodes.publish_date').includes(:comments).reverse_order
     end
     @total_post_count = Post.published.size
+    if(@total_post_count < (params[:page].to_i * POSTS_ON_FRONT_PAGE) && @posts.empty?)
+      render :text => 'No more posts', :status => 404
+    end
   end
 
   def show
@@ -17,8 +20,7 @@ class NodesController < ApplicationController
   end
 
   def old_show
-    @post = load_node(params[:id].to_i - 2)
-    render :action => 'show'
+    head :moved_permanently, :location => node_path(params[:id].to_i - 2)
   end
 
   def edit

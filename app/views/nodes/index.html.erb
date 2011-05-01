@@ -1,5 +1,5 @@
 <div class="grid_16" id="main_content">
-  <div class="padded">
+  <div class="padded posts">
     <% if params[:page] %>
       <%= render :partial => "node", :locals => { :show_teaser => true }, :collection => @posts %>
     <% else %>
@@ -10,5 +10,17 @@
   </div>
 </div>
 <div class="clear"></div>
-<%= raw paging(@total_post_count, @posts.size) %>
+<% if(@total_post_count > (POSTS_ON_FRONT_PAGE * params[:page].to_i)) %>
+<%= raw paging(@total_post_count) %>
+<% end %>
 <div class="clear"></div>
+<% content_for(:javascripts) do %>
+<script type="text/javascript">
+  $("#main_content").infinitescroll({
+  navSelector: '#pagination',
+  nextSelector: '#pagination a:first',
+  itemSelector: '#main_content div.posts',
+  donetext: "No more posts"
+  });
+</script>
+<% end %>

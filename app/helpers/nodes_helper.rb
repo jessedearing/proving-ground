@@ -7,11 +7,11 @@ module NodesHelper
     content_for :title, " - #{title}"
   end
 
-  def paging(total_post_count, size)
-    if(total_post_count > POSTS_ON_FRONT_PAGE && size == POSTS_ON_FRONT_PAGE)
-      '<div class="grid_16">' +
-      link_to("Next >>", root_path(:page => params[:page].nil? ? 2 : params[:page].to_i + 1)) +
-      '</div>'
+  def paging(total_post_count)
+      ret = '<div class="grid_16" id="pagination">'
+    if(total_post_count > (POSTS_ON_FRONT_PAGE * (params[:page].nil? ? 1 : params[:page].to_i)))
+      ret += link_to("Next >>", root_path(:page => params[:page].nil? ? 2 : params[:page].to_i + 1))
     end
+    ret += '</div>'
   end
 end
