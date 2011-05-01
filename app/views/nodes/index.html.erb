@@ -16,6 +16,7 @@
 <div class="clear"></div>
 <% content_for(:javascripts) do %>
 <script type="text/javascript">
+  $("#pagination").css("display", "none");
   $("#main_content").infinitescroll({
   navSelector: '#pagination',
   nextSelector: '#pagination a:first',
