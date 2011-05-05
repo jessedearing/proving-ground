@@ -14,14 +14,3 @@
 <%= raw paging(@total_post_count) %>
 <% end %>
 <div class="clear"></div>
-<% content_for(:javascripts) do %>
-<script type="text/javascript">
-  $("#pagination").css("visibility", "hidden");
-  $("#main_content").infinitescroll({
-  navSelector: '#pagination',
-  nextSelector: '#pagination a:first',
-  itemSelector: '#main_content div.posts',
-  donetext: "No more posts"
-  });
-</script>
-<% end %>
