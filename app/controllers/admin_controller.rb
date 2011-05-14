@@ -5,10 +5,10 @@ class AdminController < ApplicationController
   end
 
   def authenticate
-    if File.exists? "#{Rails.root}/config/admin.yml"
-      admin_creds = YAML.load_file("#{Rails.root}/config/admin.yml")
-    else
+    if File.exists? "/etc/jessedearing/admin.yml"
       admin_creds = YAML.load_file("/etc/jessedearing/admin.yml")
+    else
+      admin_creds = YAML.load_file("#{Rails.root}/config/admin.yml")
     end
     if admin_creds["username"] == params[:username] && admin_creds["password"] == Digest::SHA1.hexdigest(params[:password])
       session[:authenticated_as] = :admin
