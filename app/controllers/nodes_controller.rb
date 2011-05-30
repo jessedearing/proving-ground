@@ -5,7 +5,7 @@ class NodesController < ApplicationController
   def index
     start_row = POSTS_ON_FRONT_PAGE * (params[:page].nil? ? 0 : params[:page].to_i - 1)
     if start_row > 0
-      @posts = Post.published.limit("#{start_row}, #{POSTS_ON_FRONT_PAGE}").order('nodes.publish_date').includes(:comments).reverse_order
+      @posts = Post.published.offset(start_row).limit("#{POSTS_ON_FRONT_PAGE}").order('nodes.publish_date').includes(:comments).reverse_order
     else
       @posts = Post.top_posts.published.order('nodes.publish_date').includes(:comments).reverse_order
     end
