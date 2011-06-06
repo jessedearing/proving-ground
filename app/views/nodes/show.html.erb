@@ -16,7 +16,7 @@ title @post.title
 </div>
 <div class="clear"></div>
 <div class="prefix_1 suffix_3 grid_12">
-  <% if @post.comments.complete.present? %>
+  <% if @post.comments.size > 0 %>
     <%= render @post.comments.complete %>
   <% else %>
     <p class="no_comments">Nobody has commented on this yet.</p>

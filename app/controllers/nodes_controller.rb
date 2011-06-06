@@ -5,9 +5,9 @@ class NodesController < ApplicationController
   def index
     start_row = POSTS_ON_FRONT_PAGE * (params[:page].nil? ? 0 : params[:page].to_i - 1)
     if start_row > 0
-      @posts = Post.published.offset(start_row).limit("#{POSTS_ON_FRONT_PAGE}").order('nodes.publish_date').includes(:comments).reverse_order
+      @posts = Post.published.offset(start_row).limit("#{POSTS_ON_FRONT_PAGE}").order('nodes.publish_date').reverse_order
     else
-      @posts = Post.top_posts.published.order('nodes.publish_date').includes(:comments).reverse_order
+      @posts = Post.top_posts.published.order('nodes.publish_date').reverse_order
     end
     @total_post_count = Post.published.size
     if(@total_post_count < (params[:page].to_i * POSTS_ON_FRONT_PAGE) && @posts.empty?)
@@ -68,6 +68,6 @@ class NodesController < ApplicationController
   end
 
   def load_node(id)
-    Post.where(:id => id).first
+    Post.find(id)
   end
 end
