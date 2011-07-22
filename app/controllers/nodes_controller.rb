@@ -10,7 +10,7 @@ class NodesController < ApplicationController
       @posts = Post.top_posts.published.order('nodes.publish_date').reverse_order
     end
     @total_post_count = Post.published.size
-    if(@posts.empty?)
+    if(@posts.all.empty?)
       render :text => 'No more posts', :status => 404
     end
   end
