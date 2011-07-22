@@ -16,7 +16,7 @@ timeout 30
 if rails_env == 'production'
   listen "/var/run/jessedearing-unicorn.sock", :backlog => 2048
 else
-  listen "/Users/jdearing/code/rails/jessedearing/tmp/jessedearing.sock", :backlog => 2048
+  listen "#{File.dirname(File.absolute_path(__FILE__))}/../tmp/jessedearing.sock", :backlog => 2048
 end
 
 pid("#{File.dirname(__FILE__)}/../tmp/pids/unicorn.pid")

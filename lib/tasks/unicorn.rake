@@ -1,7 +1,7 @@
 namespace :unicorn do
   task :start do
     Dir.chdir(Rails.root)
-    `unicorn_rails -c config/unicorn.rb -D`
+    `bundle exec unicorn_rails -c config/unicorn.rb -D`
   end
 
   task :stop do
