@@ -9,7 +9,7 @@ body {
   background-color: #fff;
   /* font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;*/
   font-family: 'Neuton', 'Palatino', 'Lucida Bright', serif;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 body iframe
@@ -25,7 +25,7 @@ body iframe
 h3
 {
   font-family: 'Droid Sans', 'Arial', sans-serif;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 h4
