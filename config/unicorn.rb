@@ -2,6 +2,12 @@
 
 rails_env = ENV['RAILS_ENV'] || 'production'
 
+working_directory '/var/www/jessedearing-rails/current'
+
+before_exec do |server|
+  ENV["BUNDLE_GEMFILE"] = "/var/www/jessedearing-rails/current/Gemfile"
+end
+
 # 16 workers and 1 master
 worker_processes (rails_env == 'production' ? 2 : 1)
 
