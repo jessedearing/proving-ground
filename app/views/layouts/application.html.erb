@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html itemscope itemtype="http://schema.org/Blog">
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
   <title>Jesse Dearing.com<%= yield(:title) %></title>
@@ -15,6 +15,14 @@
   <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
 </head>
 <body>
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=311604862200681";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
   <%= render 'layouts/header' %>
   <div class="container_16">
 <%= yield %>
@@ -25,8 +33,14 @@
   <%= javascript_include_tag "http://www.google.com/recaptcha/api/js/recaptcha_ajax.js" %>
   <%= javascript_include_tag "application.js" %>
   <%= javascript_include_tag 'jquery.validate.min.js' %>
-  <%= javascript_include_tag 'jquery.infinitescroll.min.js' %>
   <%= raw google_analytics %>
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
   <%= yield(:javascripts) %>
 </body>
 </html>

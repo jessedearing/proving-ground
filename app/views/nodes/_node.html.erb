@@ -11,4 +11,9 @@
     <span class="comment_count"><%= link_to("Comments(#{node.comments.size})",node_path(node, :anchor => 'comments')) %></span>
     <% end %>
   </div>
+  <div>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-text="<%= node.title %>" data-count="horizontal" data-via="JesseDearing">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+    <div class="g-plusone" data-href="<%= url_for(node) %>"></div>
+    <div class="fb-like" data-href="<%= url_for(node) %>" data-send="false" data-width="450" data-show-faces="true"></div>
+  </div>
 </div>
