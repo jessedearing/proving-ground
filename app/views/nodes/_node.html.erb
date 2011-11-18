@@ -8,7 +8,7 @@
   <div class="node_status">
     <span class="read_more"><%= link_to node.publish_date.strftime("%B %d, %Y"), node %></span>
     <% if node.can_comment? %>
-    <span class="comment_count"><%= link_to("Comments(#{node.comments.size})",node_path(node, :anchor => 'comments')) %></span>
+    <span class="comment_count"><%= link_to("Comments(#{node.comments_count})",node_path(node, :anchor => 'comments')) %></span>
     <% end %>
   </div>
   <div>
