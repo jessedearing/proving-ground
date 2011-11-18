@@ -25,7 +25,7 @@ else
   listen "#{File.dirname(File.absolute_path(__FILE__))}/../tmp/jessedearing.sock", :backlog => 2048
 end
 
-pid("#{File.dirname(__FILE__)}/../tmp/pids/unicorn.pid")
+pid("/var/www/jessedearing-rails/tmp/pids/unicorn.pid")
 
 ##
 # REE
@@ -48,7 +48,7 @@ before_fork do |server, worker|
   #
   # Using this method we get 0 downtime deploys.
 
-  old_pid = "#{File.dirname(__FILE__)}/../tmp/pids/unicorn.pid.oldbin"
+  old_pid = "/var/www/jessedearing-rails/tmp/pids/unicorn.pid"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)
