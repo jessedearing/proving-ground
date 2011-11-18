@@ -7,3 +7,4 @@ tmp/*
 config/admin.yml
 config/recaptcha.yml
 config/secret_token.rb
+.rvmrc
