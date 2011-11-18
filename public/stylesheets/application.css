@@ -9,7 +9,7 @@ body {
   background-color: #fff;
   /* font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;*/
   font-family: 'Neuton', 'Palatino', 'Lucida Bright', serif;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .padded
@@ -33,7 +33,7 @@ h4
 
 h5
 {
-  font-size: 17px;
+  font-size: 18px;
   font-family: 'Droid Sans', 'Arial', sans-serif;
 }
 
