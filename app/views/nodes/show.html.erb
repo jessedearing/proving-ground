@@ -1,7 +1,6 @@
 <%
 title @post.title
 %>
-<% cache("node#{@post.id}") do %>
 <div class="grid_16" id="main_content">
   <div class="padded">
     <%= render :partial => "node", :locals => {:show_teaser => false}, :object => @post %>
@@ -22,7 +21,6 @@ title @post.title
     <p class="no_comments">Nobody has commented on this yet.</p>
   <% end %>
 </div>
-<% end %>
 <% end %>
 <div class="clear"></div>
 <script type="text/javascript">
