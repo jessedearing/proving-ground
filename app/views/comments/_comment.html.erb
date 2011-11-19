@@ -1,6 +1,6 @@
 <div id="comment-<%= comment.id %>" class="comment<%= ' author_comment' if comment.is_author? %>">
   <div class="comment_body">
-    <%= comment.body.gsub("\n", "<br />") %>
+    <%= comment.body %>
   </div>
   <div class="comment_info">
   <span class="gravatar">
