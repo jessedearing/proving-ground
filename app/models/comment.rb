@@ -17,6 +17,10 @@ class Comment < ActiveRecord::Base
     end
   end
 
+  def body
+    super.gsub("\n", "<br />")
+  end
+
   def update_count
     self.node.comments_count = Comment.complete.to_a.count
     self.node.save
