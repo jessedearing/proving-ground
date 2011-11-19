@@ -24,10 +24,10 @@ namespace :deploy do
     run "cd #{current_path} && #{sudo} unicorn_rails -c config/unicorn.rb -E #{rails_env} -D"
   end
   task :stop do
-    run "#{sudo} kill -QUIT $(cat #{current_path}/tmp/pids/unicorn.pid)"
+    run "#{sudo} kill -QUIT $(cat /var/www/jessedearing-rails/tmp/pids/unicorn.pid)"
   end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{sudo} kill -USR2 $(cat #{current_path}/tmp/pids/unicorn.pid)"
+    run "#{sudo} kill -USR2 $(cat /var/www/jessedearing-rails/tmp/pids/unicorn.pid)"
   end
   task :create_cache_dirs do
     run "cd #{current_path} && #{sudo} mkdir tmp/cache"
