@@ -18,7 +18,6 @@ class Comment < ActiveRecord::Base
   end
 
   def update_count
-    self.node.comments_count = Comment.complete.to_a.count
-    self.node.save
+    self.node.update_attribute(:comments_count, self.node.comments.count)
   end
 end
