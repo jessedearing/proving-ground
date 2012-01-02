@@ -1,15 +1,11 @@
 # unicorn_rails -c /data/github/current/config/unicorn.rb -E production -D
 
-rails_env = ENV['RAILS_ENV'] || 'production'
-
-working_directory '/var/www/jessedearing-rails/current'
-
 before_exec do |server|
   ENV["BUNDLE_GEMFILE"] = "/var/www/jessedearing-rails/current/Gemfile"
 end
 
 # 16 workers and 1 master
-worker_processes (rails_env == 'production' ? 2 : 1)
+worker_processes (ENV['RAILS_ENV'] == 'production' ? 2 : 1)
 
 # Load rails+github.git into the master before forking workers
 # for super-fast worker spawn times
@@ -19,13 +15,13 @@ preload_app true
 timeout 30
 
 # Listen on a Unix data socket
-if rails_env == 'production'
+if ENV['RAILS_ENV'] == 'production'
   listen "/var/run/jessedearing-unicorn.sock", :backlog => 2048
+  pid("/var/www/jessedearing-rails/tmp/pids/unicorn.pid")
+  working_directory '/var/www/jessedearing-rails/current'
 else
   listen "#{File.dirname(File.absolute_path(__FILE__))}/../tmp/jessedearing.sock", :backlog => 2048
 end
-
-pid("/var/www/jessedearing-rails/tmp/pids/unicorn.pid")
 
 ##
 # REE
