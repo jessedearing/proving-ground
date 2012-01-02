@@ -1,0 +1,26 @@
+/* code{ font-family: monospace; color: #e6e1dc; background-color: #131313; }*/
+pre { font-family: monospace; color: #e6e1dc; background-color: #131313; }
+.lnr { color: #858280; background-color: #131313; }
+.Boolean { color: #3399cc; }
+.rubyRegexp { color: #99cc33; }
+.rubyRegexpDelimiter { color: #99cc33; }
+.Number { color: #99cc66; }
+.Statement { color: #cc6633; }
+.rubyPseudoVariable { color: #3399cc; }
+.rubySymbol { color: #34a2d9; }
+.Keyword { color: #cc6633; }
+.rubyInstanceVariable { color: #3399cc; }
+.rubyFunction { color: #ffcc33; }
+.Define { color: #cc6633; }
+.rubyClass { color: #cc6633; }
+.Special { color: #e6e1dc; }
+.Identifier { color: #cc6633; }
+.rubyException { color: #cc6633; }
+.rubyInclude { color: #cc6633; }
+.rubyControl { color: #cc6633; }
+.String { color: #99cc33; }
+.rubyStringDelimiter { color: #99cc33; }
+.Type { color: #ffffff; }
+.rubyOperator { color: #cc6633; }
+.Conditional { color: #cc6633; }
+.Comment { color: #888888; font-style: italic; }
