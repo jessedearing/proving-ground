@@ -24,3 +24,5 @@ pre { font-family: monospace; color: #e6e1dc; background-color: #131313; }
 .rubyOperator { color: #cc6633; }
 .Conditional { color: #cc6633; }
 .Comment { color: #888888; font-style: italic; }
+.rubyRegexp { color: #99cc33; }
+.rubyRegexpDelimiter { color: #99cc33; }
