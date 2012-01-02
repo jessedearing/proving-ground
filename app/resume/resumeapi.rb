@@ -3,6 +3,7 @@ require 'yaml'
 require 'erb'
 require "#{Rails.root}/app/models/resume"
 require 'active_support/all'
+require 'xmlsimple'
 
 class ResumeApi < Sinatra::Base
   set :views, "#{File.dirname(__FILE__)}/views"
@@ -16,9 +17,9 @@ class ResumeApi < Sinatra::Base
   private
 
   def render_resume(format = :html)
-    @@resume_raw = File.read "#{Rails.root.to_s}/db/resume.yaml"
-    @@resume ||= YAML.load_file("#{Rails.root.to_s}/db/resume.yaml")
-    @resume = Resume.new(@@resume)
+    @resume_raw = File.read "#{Rails.root.to_s}/db/resume.yaml"
+    @resume_yaml ||= YAML.load_file("#{Rails.root.to_s}/db/resume.yaml")
+    @resume = Resume.new(@resume_yaml)
     case format.to_sym
     when :html, :htm then render_html
     when :markdown, :md then render_markdown
@@ -40,7 +41,7 @@ class ResumeApi < Sinatra::Base
   end
 
   def render_yaml
-    @@resume_raw
+    @resume_raw
   end
 
   def render_text
@@ -57,6 +58,6 @@ class ResumeApi < Sinatra::Base
   end
 
   def render_xml
-    @@resume.to_xml
+    XmlSimple.xml_out(@resume_yaml)
   end
 end
