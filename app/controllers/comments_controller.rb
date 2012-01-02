@@ -39,11 +39,17 @@ class CommentsController < ApplicationController
     if params[:comment_title].empty?
       @comment.node_id = params[:node_id]
       @comment.is_author = session[:authenticated_as] == :admin
-      @recaptcha = validate_recap(params, @comment.errors)
-      if(@comment.save_with_recap(@recaptcha))
-        expire_posts_cache(params[:node_id])
-        redirect_to node_path(params[:node_id]) + "#comment-#{@comment.id}"
-      else
+      begin
+        @recaptcha = validate_recap(params, @comment.errors)
+        if(@comment.save_with_recap(@recaptcha))
+          expire_posts_cache(params[:node_id])
+          redirect_to node_path(params[:node_id]) + "#comment-#{@comment.id}"
+        else
+          cookies[:recap] = @recaptcha
+          redirect_to node_path(params[:node_id], :comment_id => @comment.id)
+        end
+      rescue Exception => e
+        logger.warn "Caught #{e.exception} on ReCaptcha"
         cookies[:recap] = @recaptcha
         redirect_to node_path(params[:node_id], :comment_id => @comment.id)
       end
