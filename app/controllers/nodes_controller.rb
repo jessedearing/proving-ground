@@ -49,7 +49,7 @@ class NodesController < ApplicationController
 
     if @node.save
       expire_posts_cache(@node.id)
-      redirect_to root_path
+      redirect_to node_path(@node.to_param)
     end
   end
 
