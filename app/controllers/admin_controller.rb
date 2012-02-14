@@ -19,7 +19,7 @@ class AdminController < ApplicationController
   end
 
   def logout
-    session[:authenticated_as] = nil
+    session.delete(:authenticated_as)
     reset_session
     redirect_to root_path
   end
