@@ -1,8 +1,7 @@
 class NodesController < ApplicationController
-  include ExpireCache
   before_filter :verify_authenticated, :only => [:new, :edit, :create, :update]
 
-  caches_page :show, :index
+  caches_page :show, :index, :rss
 
   def index
     start_row = POSTS_ON_FRONT_PAGE * (params[:page].nil? ? 0 : params[:page].to_i - 1)
@@ -40,8 +39,8 @@ class NodesController < ApplicationController
     end
 
     if @node.save
-      expire_posts_cache(@node.id)
       expire_page :action => :index
+      expire_page :action => :rss
       redirect_to root_path
     end
   end
@@ -53,6 +52,7 @@ class NodesController < ApplicationController
     if @node.save
       expire_page :action => :show
       expire_page :action => :index
+      expire_page :action => :rss
       redirect_to node_path(@node.to_param)
     end
   end

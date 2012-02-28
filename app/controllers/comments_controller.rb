@@ -41,6 +41,7 @@ class CommentsController < ApplicationController
       begin
         @recaptcha = validate_recap(params, @comment.errors)
         if(@comment.save_with_recap(@recaptcha))
+          expire_page :controller => :nodes, :action => :index
           redirect_to node_path(params[:node_id]) + "#comment-#{@comment.id}"
         else
           cookies[:recap] = @recaptcha
