@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   include ReCaptcha::AppHelper
-  include ExpireCache
 
   def index
   end
@@ -42,7 +41,6 @@ class CommentsController < ApplicationController
       begin
         @recaptcha = validate_recap(params, @comment.errors)
         if(@comment.save_with_recap(@recaptcha))
-          expire_posts_cache(params[:node_id])
           redirect_to node_path(params[:node_id]) + "#comment-#{@comment.id}"
         else
           cookies[:recap] = @recaptcha

@@ -1,5 +1,7 @@
 require "#{File.dirname(__FILE__)}/../app/resume/resumeapi"
 Jessedearing::Application.routes.draw do
+  get '/nodes/:id/comments' => 'nodes#comments'
+  get '/page/:page' => 'nodes#index', :as => :node_page
   resources :nodes do
     resources :comments
   end

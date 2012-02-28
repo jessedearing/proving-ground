@@ -17,6 +17,15 @@ var JD = (function ($, window, nil) {
       },
       dataType: 'html'
     });
+  }),
+  get_comments: (function(node_id) {
+    $.ajax({
+      url: '/nodes/' + node_id + '/comments',
+      success: function(data) {
+        $('#comments_container').html(data);
+      },
+      dataType: 'html'
+    });
   })
   }
 })(jQuery, this);

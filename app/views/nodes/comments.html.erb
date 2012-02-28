@@ -1,0 +1,5 @@
+<% if @post.comments.size > 0 %>
+  <%= render @post.comments.complete %>
+<% else %>
+  <p class="no_comments">Nobody has commented on this yet.</p>
+<% end %>

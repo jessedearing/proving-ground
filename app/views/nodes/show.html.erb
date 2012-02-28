@@ -14,23 +14,21 @@ title @post.title
   <div id="comment_new"></div>
 </div>
 <div class="clear"></div>
-<div class="prefix_1 suffix_3 grid_12">
-  <% if @post.comments.size > 0 %>
-    <%= render @post.comments.complete %>
-  <% else %>
-    <p class="no_comments">Nobody has commented on this yet.</p>
-  <% end %>
+<div class="prefix_1 suffix_3 grid_12" id="comments_container">
+  Loading....
 </div>
 <% end %>
 <div class="clear"></div>
 <script type="text/javascript">
 $(document).ready(function() {
   if((/comment_id/).test(window.location.search)) {
-  JD.edit_comment(<%= params[:id]%><%= ",#{params[:comment_id]}" if params[:comment_id] %>);
+  JD.edit_comment('<%= params[:id]%><%= ",#{params[:comment_id]}" if params[:comment_id] %>');
   }
 
   if((/^#comment-/).test(window.location.hash)) {
     $(window.location.hash).animate({backgroundColor: '#ffffaa'}, 600).animate({backgroundColor: '#ffffff'}, 600);
   }
+
+  JD.get_comments('<%= params[:id] %>');
 });
 </script>
