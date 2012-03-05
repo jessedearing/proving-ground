@@ -40,7 +40,12 @@ namespace :deploy do
   task :copy_db_config do
     run "cp -f /etc/jessedearing/database.yml #{current_path}/config/"
   end
+  task :precompile_assets do
+    run "cd #{current_path} && rake assets:precompile"
+  end
 end
+
+before("deploy:symlink", "deploy:precompile_assets")
 
 after("deploy:symlink", "deploy:create_cache_dirs")
 after("deploy:symlink", "deploy:chown_public_dir")
