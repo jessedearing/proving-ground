@@ -41,7 +41,8 @@ namespace :deploy do
     run "cp -f /etc/jessedearing/database.yml #{current_path}/config/"
   end
   task :precompile_assets do
-    run "cd #{current_path} && rake assets:precompile"
+    run "cd #{current_path} && #{sudo} chown -R jessed:www-data public"
+    run "cd #{release_path} && bundle exec rake assets:precompile"
   end
 end
 
