@@ -30,8 +30,8 @@ namespace :deploy do
     run "#{sudo} kill -USR2 $(cat /var/www/jessedearing-rails/tmp/pids/unicorn.pid)"
   end
   task :create_cache_dirs do
-    run "cd #{current_path} && #{sudo} mkdir tmp/cache"
-    run "cd #{current_path} && #{sudo} mkdir tmp/sessions"
+    # run "cd #{current_path} && #{sudo} mkdir tmp/cache"
+    # run "cd #{current_path} && #{sudo} mkdir tmp/sessions"
     run "cd #{current_path} && #{sudo} chown -R www-data:www-data tmp"
   end
   task :chown_public_dir do
@@ -41,7 +41,7 @@ namespace :deploy do
     run "cp -f /etc/jessedearing/database.yml #{current_path}/config/"
   end
   task :precompile_assets do
-    run "cd #{current_path} && #{sudo} chown -R jessed:www-data public"
+    run "cd #{release_path} && #{sudo} chown -R jessed:www-data public"
     run "cd #{release_path} && bundle exec rake assets:precompile"
   end
 end
