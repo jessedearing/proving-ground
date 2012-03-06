@@ -9,9 +9,9 @@ module CommentsHelper
     "http://gravatar.com/avatar/#{hash}?s=32"
   end
 
-  def comments_path(obj=nil)
-    if obj
-      "/nodes/#{params[:node_id]}/comments/#{obj.id}"
+  def comments_path(obj)
+    if obj[:id]
+      "/nodes/#{params[:node_id]}/comments/#{obj[:id]}"
     else
       "/nodes/#{params[:node_id]}/comments"
     end

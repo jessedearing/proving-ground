@@ -7,7 +7,7 @@
   left: -9999px;
 }
 </style>
-<%= form_for @comment, :html => {:method => (@comment.id.nil? ? 'post' : 'put'), :id => 'comment_form'} do |f|%>
+<%= form_for @comment, :method => (@comment.id.nil? ? 'post' : 'put'), :html => {:id => 'comment_form'} do |f|%>
 <fieldset>
   <legend>New Comment</legend>
   <div>
