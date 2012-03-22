@@ -10,7 +10,7 @@ Jessedearing::Application.routes.draw do
   get 'blog/node/:id' => 'nodes#old_show'
 
   # RSS feeds
-  get 'rss.xml' => 'nodes#rss'
+  get 'rss.xml' => 'nodes#rss', :format => :xml
   # This route is to not break old links to my RSS feed
   get 'blog/rss.xml' => 'nodes#rss'
 

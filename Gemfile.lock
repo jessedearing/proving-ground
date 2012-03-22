@@ -130,6 +130,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  builder
   capistrano
   coffee-rails (~> 3.2.1)
   foreman

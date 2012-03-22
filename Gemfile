@@ -28,6 +28,7 @@ gem 'sinatra'
 # Deploy with Capistrano
 gem 'capistrano'
 
+gem 'builder'
 gem 'xml-simple'
 
 group :development do

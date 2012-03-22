@@ -59,7 +59,9 @@ class NodesController < ApplicationController
 
   def rss
     @nodes = Post.top_posts.published.order(:publish_date).reverse_order
-    render :layout => false
+    respond_to do |format|
+      format.xml
+    end
     response.headers["Content-Type"] = "application/xml; charset=utf-8"
   end
 
