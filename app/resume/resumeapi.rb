@@ -60,6 +60,8 @@ class ResumeApi < Sinatra::Base
   end
 
   def render_pdf
+    content_type('application/pdf')
+    attachment('resume.pdf')
     @resume.to_pdf
   end
 
