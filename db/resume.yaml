@@ -1,8 +1,15 @@
 Jesse Dearing:
-  Objective: To utilize my experience, skills, and knowledge to design and implement quality software in a team environment.
+  Objective: Deliver quality software in a professional manner using the best tools and techniques available.
   Technologies:
     - Ruby
     - Rails
+    - Sinatra
+    - Chef
+    - RSpec
+    - Test::Unit
+    - Git
+    - Nginx
+    - Apache
     - HTML 5
     - Linux (Ubuntu)
     - OS X
@@ -12,12 +19,25 @@ Jesse Dearing:
     - PostgreSQL
     - SQL Server
     - Powershell
-    - Git
     - SVN
   Experience:
+    CauseMetric:
+      Start Date: July 2011
+      End Date: Present
+      Department: PureCharity
+      Position: Developer
+      Responsibilities:
+        - Built EC2 infrastructure using Chef
+        - Built out Nagios monitoring and alerts with BluePill for process management
+        - Understood and communicated PCI Compliance concerns to the business and kept credit card numbers out of the system
+        - Set up databases, load balancers, web servers, resque workers, and HTTPS in 3 environments
+        - Used Ruby on Rails 3.2 to build a fully featured web application to facilitate giving to charities
+        - Utilized NoSQL datastores (MongoDB and Redis specifically) to implement best solutions
+        - Wrote a double entry accounting system in PostgreSQL to track donations and grants
+        - Implemented Resque and Resque Scheduler for background processing work
     Fellowship Technologies:
       Start Date: June 2009
-      End Date: Present
+      End Date: June 2011
       Department: Product Development
       Position: Software Developer
       Responsibilities:
