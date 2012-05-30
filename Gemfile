@@ -21,6 +21,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'rack-accept'
+
 # Use unicorn as the web server
 gem 'unicorn'
 gem 'sinatra'
