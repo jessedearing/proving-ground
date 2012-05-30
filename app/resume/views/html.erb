@@ -42,6 +42,12 @@
     {
       font-size: 18px;
     }
+
+    @media print {
+      .no_print {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -113,6 +119,13 @@
             <dd><%= education["GPA"] %></dd>
           </dl>
         <% end %>
+      </div>
+      <div class="clear"></div>
+      <div class="prefix_2 grid_8 suffix_2 no_print">
+        <p>This resume is a REST resource! You can get alternative versions by changing the file
+        extension in the URI (I.e. <a href="http://jessedearing.com/resume.json">http://jessedearing.com/resume.json</a>) or by
+        calling http://jessedearing.com/resume with a specific content type in the request Accept header.
+        </p>
       </div>
       <div class="clear"></div>
 </body>
