@@ -18,6 +18,7 @@ class ResumeApi < Sinatra::Base
 
   def render_resume(format = :html)
     @resume_raw = File.read "#{Rails.root.to_s}/db/resume.yaml"
+    @resume_yaml = nil unless Rails.env.production?
     @resume_yaml ||= YAML.load_file("#{Rails.root.to_s}/db/resume.yaml")
     @resume = Resume.new(@resume_yaml)
     case format.to_sym
@@ -27,6 +28,7 @@ class ResumeApi < Sinatra::Base
     when :json, :js then render_json
     when :xml then render_xml
     when :txt, :text then render_text
+    when :pdf then render_pdf
     else unsupported_media_type
     end
   end
@@ -55,6 +57,10 @@ class ResumeApi < Sinatra::Base
 
   def render_json
     @resume.to_json
+  end
+
+  def render_pdf
+    @resume.to_pdf
   end
 
   def render_xml
