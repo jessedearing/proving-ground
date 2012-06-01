@@ -21,7 +21,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'rack-accept'
+gem 'rack-accept', :require => 'rack/accept'
 
 # Use unicorn as the web server
 gem 'unicorn'
