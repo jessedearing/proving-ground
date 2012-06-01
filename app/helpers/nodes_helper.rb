@@ -1,6 +1,6 @@
 module NodesHelper
-  def post_path(id)
-    node_path(id)
+  def post_path(*args)
+    node_path(*args)
   end
 
   def title(title)
