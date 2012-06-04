@@ -9,12 +9,13 @@ Technologies
 ------------
 
 <% @resume.technologies.each do |tech| %>
-  * <%= tech %><% end %>
+  * <%= tech %>
+<% end %>
 
 Experience
 ----------
-
 <% @resume.experience.each do |place, experience| %>
+
 ###<%= place %>
 <%= experience['Start Date'] %> - <%= experience['End Date'] %>
 
@@ -23,7 +24,8 @@ _<%= experience['Department'] %>_
 
 ####Responsibilities
   <% experience['Responsibilities'].each do |responsibility| %>
-  * <%= responsibility %> <% end %>
+  * <%= responsibility %>
+  <% end %>
 <% end %>
 
 Academic Activities
@@ -39,6 +41,6 @@ Education
 =========
 
 <% @resume.education.each do |school, education| %>
-  **Degree**: <%= education['Degree'] %>
-  **GPA**: <%= education['GPA'] %>
+  _Degree_: <%= education['Degree'] %>  
+  _GPA_: <%= education['GPA'] %>
 <% end %>
