@@ -64,5 +64,7 @@ module Jessedearing
     config.assets.version = '1.0'
 
     config.assets.precompile += %w[960.css tubster.css gist.css jquery-ui-1.8.10.custom.min.js jquery.validate.min.js]
+
+    config.threadsafe!
   end
 end

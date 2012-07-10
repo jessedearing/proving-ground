@@ -34,7 +34,4 @@ Jessedearing::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-
-  config.active_record.logger = Logger.new(STDOUT)
-  config.action_controller.logger = Logger.new(STDOUT)
 end

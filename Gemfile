@@ -23,8 +23,8 @@ gem 'jquery-rails'
 
 gem 'rack-accept', :require => 'rack/accept'
 
-# Use unicorn as the web server
-gem 'unicorn'
+gem 'unicorn' #Deprecating unicorn for puma
+gem 'puma'
 gem 'sinatra'
 
 # Deploy with Capistrano
