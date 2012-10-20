@@ -29,16 +29,19 @@ namespace :deploy do
     run "cd #{current_path} && #{sudo} chown -R www-data:www-data public"
   end
   task :copy_db_config do
-    run "cp -f /etc/jessedearing/database.yml #{current_path}/config/"
+    run "cp -f /etc/jessedearing/database.yml #{release_path}/config/"
   end
   task :precompile_assets do
     run "cd #{release_path} && #{sudo} chown -R jessed:www-data public"
-    run "cd #{release_path} && bundle exec rake assets:precompile"
+    run "cd #{release_path} && bundle exec rake --trace assets:precompile"
   end
+  def restart; end
+  def start; end
+  def stop; end
 end
 
 before("deploy:symlink", "deploy:precompile_assets")
 
 after("deploy:symlink", "deploy:create_cache_dirs")
 after("deploy:symlink", "deploy:chown_public_dir")
-after("deploy:symlink", "deploy:copy_db_config")
+before("deploy:precompile_assets", "deploy:copy_db_config")

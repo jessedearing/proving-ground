@@ -1,7 +1,7 @@
 class NodesController < ApplicationController
   before_filter :verify_authenticated, :only => [:new, :edit, :create, :update]
 
-  caches_page :show, :index, :rss
+  # caches_page :show, :index, :rss
 
   def index
     start_row = POSTS_ON_FRONT_PAGE * (params[:page].nil? ? 0 : params[:page].to_i - 1)
