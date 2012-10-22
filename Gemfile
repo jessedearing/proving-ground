@@ -33,6 +33,7 @@ gem 'capistrano'
 gem 'builder'
 gem 'xml-simple'
 gem 'prawn'
+gem 'sorcery'
 
 group :development do
   gem 'foreman'

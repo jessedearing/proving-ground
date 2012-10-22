@@ -1,5 +1,5 @@
 class NodesController < ApplicationController
-  before_filter :verify_authenticated, :only => [:new, :edit, :create, :update]
+  before_filter :require_login, :only => [:new, :edit, :create, :update]
 
   # caches_page :show, :index, :rss
 
@@ -71,12 +71,6 @@ class NodesController < ApplicationController
   end
 
   private
-
-  def verify_authenticated
-    if session[:authenticated_as] != :admin
-      redirect_to root_path
-    end
-  end
 
   def load_node(id)
     Post.find(id)
